@@ -1,0 +1,28 @@
+# Obsidian local state and installed plugin code
+.obsidian/
+.trash/
+
+# Local AI/editor state
+.claude/
+.claudian/
+
+# Zotero imports and copyrighted full text
+00_Inbox/*
+!00_Inbox/zotero_to_obsidian_workflow.md
+!00_Inbox/.gitkeep
+*.pdf
+*_fulltext.txt
+*.bib
+*.ris
+
+# Personal Zotero library inventories
+05_Tables/zotero_candidate_papers.csv
+05_Tables/zotero_collection_summary.csv
+99_Outputs/zotero_import_assessment.md
+
+# Temporary files
+*.tmp
+*.log
+~$*
+.DS_Store
+Thumbs.db
