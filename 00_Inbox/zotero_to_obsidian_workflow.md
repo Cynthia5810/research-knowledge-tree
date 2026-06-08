@@ -43,7 +43,7 @@ Obsidian 负责文献定位和知识树。
 4. 把导出文件保存到：
 
 ```text
-D:\学术知识树\Membrane Knowledge Tree\00_Inbox\
+<your-vault-path>/00_Inbox/
 ```
 
 5. 告诉我导出文件名，我来帮你生成初始 Review Map 和 Paper Position Card。
@@ -51,7 +51,7 @@ D:\学术知识树\Membrane Knowledge Tree\00_Inbox\
 ## 当前已同步测试文件
 
 - `00_Inbox/zotero_PBLWP9ZL.bib`
-- `00_Inbox/PBLWP9ZL_fulltext.txt`
+- `00_Inbox/<zotero-item-key>_fulltext.txt`
 
 对应 Zotero 条目：
 

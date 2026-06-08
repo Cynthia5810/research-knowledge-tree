@@ -1,174 +1,183 @@
-# Membrane Knowledge Tree
+# Research Knowledge Tree
 
-一个面向膜科学与离子分离研究的个人科研知识组织项目。
+> 一套将文献阅读转化为“概念结构、论文定位与可追溯证据”的科研知识组织方法。
 
-它不把论文简单堆成 Obsidian 散点图，而是把科研内容拆成：
+本项目探索一个问题：**怎样让不断增加的论文形成可理解、可扩展的研究脉络，而不是一组文件、标签或散点链接？**
 
-- 领域框架
-- 文献定位
-- 论点与证据
-- 多视角知识树
-- Zotero 到 Obsidian 的半自动工作流
+普通文献管理器擅长保存论文，笔记软件擅长记录阅读结果，但它们通常无法清楚回答：
 
-## 核心思想
+- 一篇论文在整个研究领域中处于什么位置？
+- 它解决了哪个问题，使用了什么方法，支持了什么机制？
+- 某项结论最早来自哪里，后来得到怎样的支持或质疑？
+- 同一项研究如何同时出现在应用、材料、方法、机制和性能视角中？
 
-文献不是知识树的主干。
+Research Knowledge Tree 提出一种“**预设框架 + 多视角定位 + Claim/Evidence 证据层**”的方法。当前仓库以膜科学与离子分离作为示范案例，但方法本身可以迁移到材料、化学、能源、环境等研究领域。
 
-真正需要组织的是研究对象、问题、方法、机制、性能、应用和它们之间的关系。论文主要承担三种角色：
+## 方法论
 
-1. 综述作为树下的地图和文献入口。
-2. 原始研究作为树上的代表性证据。
-3. Claim/Evidence Record 保存可复用的科研论点、证据和适用边界。
+### 1. 知识是主干，文献是证据
 
-例如：
+知识树的主干不是论文标题，而是：
 
 ```text
-Li/Mg 分离
-└── 聚合物离子选择膜
-    └── 表面电荷调控
-        └── 静电排斥
-            ├── Claim：高正电选择层增强 Mg2+ 排斥
-            └── 代表性证据：Wang et al. 2024
+研究对象 → 科学问题 → 技术路线 → 方法 → 机制 → 性能 → 应用
 ```
 
-## 为什么不是一棵单线树
+论文根据其贡献被定位到相应节点。这样，阅读新论文是在修正和扩展知识结构，而不是继续增加孤立笔记。
 
-同一篇论文可能同时属于：
+### 2. 综述是地图，不是普通树叶
 
-- 应用视角：Li/Mg 分离
-- 材料视角：聚合物膜
-- 方法视角：表面电荷调控
-- 机制视角：静电相互作用
-- 性能视角：选择性、通量、面积电阻
-- 问题视角：选择性/通量权衡
+综述主要用于：
 
-因此，本项目以“预设领域框架 + 多视角挂载 + Claim 证据层”为目标，而不是强迫所有知识进入唯一父节点。
+- 建立领域分类框架
+- 找到关键原始研究
+- 识别共识、争议与研究空白
+- 生成需要进一步核验的论点
 
-## 项目结构
+因此，综述被整理为 `Review Map`，放在知识树的导航层；原始论文则作为具体结论的证据来源。
 
-```text
-Membrane Knowledge Tree/
-├── 00_Inbox/                    # Zotero 临时导入，不提交全文
-├── 01_Review_Maps/              # 综述地图
-├── 02_Paper_Position_Cards/     # 原始论文定位与整体分析
-├── 03_Knowledge_Tree/           # 人工与自动生成的知识树视图
-├── 04_Claim_Evidence_Records/   # 可复用论点与证据
-├── 05_Tables/                   # 自动生成的索引表
-├── 06_Prompts/                  # 卡片模板
-├── 07_Ontology/                 # 受控术语和分类
-├── 08_Scripts/                  # Zotero 初筛与知识树生成脚本
-└── 99_Outputs/                  # 分析报告
+### 3. 一篇论文可以有多个坐标
+
+树负责提供清晰层级，但科研知识并非严格的单继承结构。同一篇论文可以同时具有：
+
+| 视角 | 示例 |
+| --- | --- |
+| 应用 | Li/Mg 分离 |
+| 材料 | 聚合物离子选择膜 |
+| 方法 | 表面电荷调控 |
+| 机制 | 静电排斥 |
+| 性能 | 选择性、通量、面积电阻 |
+| 问题 | 选择性与通量的权衡 |
+
+项目保留一条主要定位用于阅读，同时记录其他视角，实现“树形展示、图状关联”。
+
+### 4. Claim 是最小的可复用知识单元
+
+关键词只能说明论文谈到了什么，Claim 则记录论文实际证明了什么：
+
+```yaml
+claim: "高正电选择层可以增强对二价阳离子的排斥"
+source_paper: "Wang et al. 2024"
+evidence_type: experimental
+original_claim_source: true
+consensus_status: emerging
+scope: "特定膜体系与测试条件"
+```
+
+当大量论文重复引用同一结论时，知识树优先保留原始来源、代表性支持证据、反例及适用边界，而不是机械地挂载全部引用论文。
+
+## 信息流
+
+```mermaid
+flowchart LR
+    A["Zotero 文献库"] --> B["文献初筛"]
+    B --> C{"文献角色"}
+    C -->|综述| D["Review Map"]
+    C -->|原始研究| E["Paper Position Card"]
+    D --> F["领域框架与待验证 Claim"]
+    E --> G["方法、机制、性能与局限"]
+    F --> H["Claim / Evidence Record"]
+    G --> H
+    H --> I["多视角知识树"]
 ```
 
 ## 三类核心记录
 
 ### Review Map
 
-综述不直接充当树上证据，主要用于：
+把综述转化为领域地图、关键文献入口和待验证问题。
 
-- 建立分类框架
-- 发现关键原始论文
-- 提取共识、争议和未来方向
-- 生成待验证的 Claim 候选
-
-模板：[`06_Prompts/review_map_template.md`](06_Prompts/review_map_template.md)
+模板：[review_map_template.md](06_Prompts/review_map_template.md)
 
 ### Paper Position Card
 
-原始论文卡不仅提取关键词，还保留：
+不只摘录关键词，而是记录研究问题、方法路线、关键结果、证据位置、局限、贡献类型和多轴定位。
 
-- 研究问题与核心假设
-- 方法路线
-- 关键结果和证据位置
-- 作者真正证明了什么
-- 局限和性能权衡
-- 文献在知识框架中的主定位与多轴定位
-- 是否需要重读
+模板：[paper_position_card_template.md](06_Prompts/paper_position_card_template.md)
 
-模板：[`06_Prompts/paper_position_card_template.md`](06_Prompts/paper_position_card_template.md)
+### Claim / Evidence Record
 
-### Claim Evidence Record
+把跨论文复用的论点与原始证据、支持证据、反例、共识状态和适用边界连接起来。
 
-Claim 是知识树真正复用的基本单位：
+示例：[claim_cb_cob_positive_mcem_limg_001.md](04_Claim_Evidence_Records/claim_cb_cob_positive_mcem_limg_001.md)
 
-```yaml
-claim: "..."
-source_paper: "..."
-original_claim_source: true
-evidence_type: experimental
-consensus_status: emerging
-need_attach_all_followups: false
+## 仓库结构
+
+```text
+Research Knowledge Tree/
+├── 00_Inbox/                    # 临时导入区，不提交论文全文
+├── 01_Review_Maps/              # 综述地图
+├── 02_Paper_Position_Cards/     # 原始论文定位卡
+├── 03_Knowledge_Tree/           # 人工与自动生成的树形视图
+├── 04_Claim_Evidence_Records/   # 论点与证据记录
+├── 05_Tables/                   # 自动生成的索引
+├── 06_Prompts/                  # 分析模板
+├── 07_Ontology/                 # 受控术语与分类体系
+├── 08_Scripts/                  # Zotero 初筛和知识树生成
+└── 99_Outputs/                  # 阶段性分析结果
 ```
 
-如果某条结论被数百篇论文引用，不需要把它们全部挂到树上。记录原始来源、引用共识、代表性支持论文和代表性反驳论文即可。
+## 运行示例
 
-## Zotero 工作流
-
-项目支持通过 Zotero Desktop Local API 读取本地文献库。
-
-前提：
-
-1. 启动 Zotero Desktop。
-2. 在 Zotero 设置中允许本机应用通信。
-3. Local API 位于 `http://127.0.0.1:23119`。
-
-对 Zotero 新导入文献做初筛：
+需要 Node.js 18 或更高版本。
 
 ```bash
-node 08_Scripts/zotero_triage.js
+npm run generate:tree
 ```
 
-它会生成：
-
-- `05_Tables/zotero_collection_summary.csv`
-- `05_Tables/zotero_candidate_papers.csv`
-- `99_Outputs/zotero_import_assessment.md`
-
-这些文件可能包含个人文献库信息，默认不提交到 Git。
-
-## 生成知识树
-
-定位卡完成后运行：
-
-```bash
-node 08_Scripts/generate_tree.js
-```
-
-输出：
+该命令读取论文定位卡，生成：
 
 - `03_Knowledge_Tree/generated_tree.md`
 - `05_Tables/paper_position_index.csv`
 
-## 当前示例
+如果本机正在运行 Zotero Desktop，并已允许本地应用访问：
 
-仓库包含两篇试分析：
+```bash
+npm run triage:zotero
+```
 
-- Zhang et al. 2024：综述地图，用于建立锂离子选择性机制框架。
-- Wang et al. 2024：原始研究定位卡，用于展示表面电荷调控路线。
+该步骤只读取本地 Zotero API，生成候选文献与 collection 概览；个人文献清单和全文不会提交到仓库。
 
-对应文件：
+## 当前案例
 
-- [`01_Review_Maps/2024-Zhang-Lithium-ion-selectivity-through-membranes.md`](01_Review_Maps/2024-Zhang-Lithium-ion-selectivity-through-membranes.md)
-- [`02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md`](02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md)
-- [`99_Outputs/two_paper_trial_analysis.md`](99_Outputs/two_paper_trial_analysis.md)
+仓库目前用“膜法锂镁分离”验证方法：
+
+- 一篇综述被转化为领域框架和机制地图。
+- 一篇原始研究被转化为论文定位卡。
+- 两条论点被拆分为独立的 Claim/Evidence Record。
+- 脚本依据结构化字段生成层级知识树和文献索引。
+
+案例入口：
+
+- [综述地图](01_Review_Maps/2024-Zhang-Lithium-ion-selectivity-through-membranes.md)
+- [原始论文定位卡](02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md)
+- [膜科学知识树](03_Knowledge_Tree/membrane_tree.md)
+- [两篇论文试分析](99_Outputs/two_paper_trial_analysis.md)
+
+## 项目状态
+
+这是一个个人研究方法实验，目前处于早期原型阶段。当前重点不是建立完整的膜科学数据库，而是逐步验证：
+
+1. 分类框架能否随着新文献稳定扩展。
+2. 多视角定位能否降低重复阅读成本。
+3. Claim/Evidence 模型能否保留结论的来源和适用边界。
+4. 人工判断与自动化提取应当如何分工。
+
+## 路线图
+
+- [ ] 用更多论文检验卡片结构与分类稳定性
+- [ ] 增加方法线、机制线、材料线和应用线视图
+- [ ] 从 Zotero 全文索引生成待审核的定位卡草稿
+- [ ] 利用 OpenAlex、OpenCitations 等开放数据构建引用证据层
+- [ ] 增加性能权衡、冲突证据和适用边界表达
+- [ ] 把膜科学本体与通用方法框架分离
 
 ## 数据与版权
 
-本仓库不提交：
+本仓库只公开方法、模板、代码和结构化示例，不包含论文 PDF、全文转录、私人 Zotero 库、本地附件路径、账户信息或 API 密钥。
 
-- 论文 PDF 或全文转录
-- Zotero 私人文献库导出
-- 本地附件路径
-- Obsidian 插件二进制和工作区状态
-- API 密钥或账户信息
+项目中的文献分析是研究笔记，不替代原始论文。引用具体结论时请回到论文原文核验。
 
-请只提交你有权公开的笔记、结构化分析和少量必要引文。
+## License
 
-## 后续方向
-
-- 为领域概念、综述叙事、研究对象和 Claim 证据生成独立视图
-- 使用 OpenAlex、Semantic Scholar、OpenCitations 构建免费引用共识层
-- 自动识别综述、原始研究和重复条目
-- 从 Zotero 全文索引生成定位卡草稿
-- 增加性能权衡和适用边界表达
-
+许可证尚未确定。在许可证加入前，仓库内容默认保留所有权利。

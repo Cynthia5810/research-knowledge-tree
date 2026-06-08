@@ -1,8 +1,8 @@
 {
-  "name": "membrane-knowledge-tree",
+  "name": "research-knowledge-tree",
   "version": "0.1.0",
   "private": true,
-  "description": "A Zotero-to-Obsidian research knowledge framework for membrane science and ion separation.",
+  "description": "A methodology for turning scientific literature into navigable knowledge structures and traceable evidence.",
   "scripts": {
     "triage:zotero": "node 08_Scripts/zotero_triage.js",
     "generate:tree": "node 08_Scripts/generate_tree.js",
@@ -12,4 +12,3 @@
     "node": ">=18"
   }
 }
-

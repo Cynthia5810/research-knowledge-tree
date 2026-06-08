@@ -1,6 +1,6 @@
-# Membrane Knowledge Tree
+# Research Knowledge Tree
 
-这个 vault 的目标不是生成 Obsidian 自带的散点图，而是维护一棵可阅读、可更新的科研知识树。
+这个 vault 是 Research Knowledge Tree 方法论的个人工作区。当前使用膜科学作为案例，目标不是生成 Obsidian 自带的散点图，而是维护一套可阅读、可更新、可追溯证据的科研知识结构。
 
 ## 核心原则
 
