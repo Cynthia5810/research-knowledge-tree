@@ -26,19 +26,16 @@
           <span data-icon="search" aria-hidden="true"></span>
           <input id="searchInput" type="search" placeholder="搜索概念或论文" autocomplete="off">
         </label>
-        <button class="icon-button" id="undoButton" title="撤销" aria-label="撤销">
-          <span data-icon="undo-2"></span>
-        </button>
         <button class="icon-button" id="exportButton" title="导出 JSON" aria-label="导出 JSON">
           <span data-icon="download"></span>
         </button>
-        <button class="icon-button" id="importButton" title="导入 JSON" aria-label="导入 JSON">
-          <span data-icon="upload"></span>
-        </button>
-        <button class="icon-button" id="resetButton" title="恢复示例数据" aria-label="恢复示例数据">
+        <button class="icon-button" id="refreshButton" title="从 Obsidian 重新载入" aria-label="从 Obsidian 重新载入">
           <span data-icon="rotate-ccw"></span>
         </button>
-        <input id="importFile" type="file" accept="application/json" hidden>
+        <div class="sync-state" id="syncState">
+          <span class="sync-dot"></span>
+          <span id="syncText">正在连接 Obsidian</span>
+        </div>
       </div>
     </header>
 
@@ -152,6 +149,10 @@
       <label>
         类别
         <select id="conceptCategory"></select>
+      </label>
+      <label>
+        上级概念
+        <select id="conceptParent"></select>
       </label>
       <label>
         Zotero 标准标签

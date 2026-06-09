@@ -119,6 +119,32 @@ select:focus-visible {
   gap: 8px;
 }
 
+.sync-state {
+  height: 32px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0 9px;
+  color: var(--muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.sync-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--yellow);
+}
+
+.sync-state.synced .sync-dot {
+  background: var(--green);
+}
+
+.sync-state.error .sync-dot {
+  background: var(--red);
+}
+
 .search {
   width: min(34vw, 340px);
   height: 40px;
@@ -357,6 +383,42 @@ select:focus-visible {
   cursor: grab;
   box-shadow: 0 3px 10px rgba(45, 43, 35, 0.045);
   transition: border-color 120ms, transform 120ms, box-shadow 120ms;
+}
+
+.concept-card[data-depth="1"] {
+  margin-left: 13px;
+}
+
+.concept-card[data-depth="2"] {
+  margin-left: 26px;
+}
+
+.concept-card[data-depth="3"] {
+  margin-left: 39px;
+}
+
+.concept-card[data-depth="4"] {
+  margin-left: 52px;
+}
+
+.concept-card[data-depth]:not([data-depth="0"])::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  margin-left: -22px;
+  margin-top: 9px;
+  background: var(--strong-line);
+}
+
+.concept-card {
+  position: relative;
+}
+
+.concept-path {
+  margin-bottom: 5px;
+  color: var(--category-color);
+  font-size: 9px;
 }
 
 .concept-card:hover {
@@ -869,6 +931,10 @@ dialog::backdrop {
   }
 
   .stats {
+    display: none;
+  }
+
+  .sync-state {
     display: none;
   }
 

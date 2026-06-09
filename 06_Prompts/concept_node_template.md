@@ -2,6 +2,7 @@
 type: concept
 label: ""
 category: material | method | mechanism | performance | application | object
+parent: ""
 zotero_tag: ""
 aliases: []
 status: draft

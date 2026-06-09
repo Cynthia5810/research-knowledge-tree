@@ -32,6 +32,7 @@
 
 ## 主要入口
 
+- `09_Web_App/`：与 Obsidian Markdown 双向同步的交互式层级编辑器
 - `03_Knowledge_Tree/mvp_knowledge_graph.canvas`：当前最小可用版本，可在 Obsidian 中拖动节点和调整连线
 - `04_Concept_Nodes/`：标签定义及标签之间的逻辑关系
 - `03_Knowledge_Tree/membrane_tree.md`：主知识树
@@ -49,6 +50,8 @@
 3. 在 `04_Concept_Nodes/` 中维护标签的定义与关系。
 4. 运行 `npm run generate:mvp`，生成关系图和 Obsidian Canvas。
 5. 在 Canvas 中拖动节点，检查这套关系是否符合你的理解。
+
+网页编辑器可通过 `npm run web` 启动。概念笔记的 `parent` 属性决定层级，网页与 `04_Concept_Nodes/` 自动双向同步。
 
 综述地图、Claim/Evidence 和完整论文分析仍然保留，但暂时不作为 MVP 的必需步骤。
 

@@ -10,7 +10,6 @@ const categories = [
 ];
 
 const relationTypes = [
-  { id: "is_a", label: "属于" },
   { id: "used_for", label: "用于" },
   { id: "acts_via", label: "通过机制" },
   { id: "improves", label: "改善" },
@@ -102,8 +101,8 @@ const initialState = {
   ],
 };
 
-let state = loadState();
-let history = [];
+let state = clone(initialState);
+let stateVersion = "";
 let currentView = "board";
 let selectedConceptId = null;
 let selectedPaperId = null;
@@ -118,38 +117,48 @@ function clone(value) {
   return JSON.parse(JSON.stringify(value));
 }
 
-function loadState() {
+async function api(path, options = {}) {
+  const response = await fetch(path, {
+    headers: { "Content-Type": "application/json", ...(options.headers || {}) },
+    ...options,
+  });
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.error || "同步失败");
+  return result;
+}
+
+function setSyncState(status, text) {
+  el("syncState").className = `sync-state ${status}`;
+  el("syncText").textContent = text;
+}
+
+async function loadFromObsidian({ quiet = false } = {}) {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return JSON.parse(saved);
+    if (!quiet) setSyncState("", "正在读取 Obsidian");
+    const next = await api("/api/state");
+    const selectionExists = next.concepts.some((item) => item.id === selectedConceptId);
+    state = { concepts: next.concepts, papers: next.papers };
+    stateVersion = next.version;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    if (!selectionExists) selectedConceptId = null;
+    if (!next.papers.some((item) => item.id === selectedPaperId)) selectedPaperId = null;
+    renderAll();
+    setSyncState("synced", "已与 Obsidian 同步");
   } catch (error) {
-    console.warn("Could not load saved state", error);
+    setSyncState("error", "Obsidian 同步失败");
+    if (!quiet) showToast(error.message);
   }
-  return clone(initialState);
 }
 
-function saveState(message) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  if (message) showToast(message);
-}
-
-function checkpoint() {
-  history.push(clone(state));
-  if (history.length > 30) history.shift();
-  updateUndoState();
-}
-
-function undo() {
-  if (!history.length) return;
-  state = history.pop();
-  saveState("已撤销");
+async function applyServerState(result, message) {
+  if (result.state) {
+    state = { concepts: result.state.concepts, papers: result.state.papers };
+    stateVersion = result.state.version;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
   renderAll();
-  updateUndoState();
-}
-
-function updateUndoState() {
-  el("undoButton").disabled = history.length === 0;
-  el("undoButton").style.opacity = history.length ? "1" : "0.35";
+  setSyncState("synced", "已写入 Obsidian");
+  if (message) showToast(message);
 }
 
 function slugify(value) {
@@ -166,6 +175,7 @@ function categoryById(id) {
 }
 
 function relationLabel(id) {
+  if (id === "is_a") return "属于";
   return relationTypes.find((item) => item.id === id)?.label || id;
 }
 
@@ -214,15 +224,46 @@ function matchesSearch(...values) {
   return values.some((value) => String(value || "").toLowerCase().includes(searchTerm));
 }
 
+function conceptPath(concept) {
+  const labels = [];
+  const visited = new Set();
+  let current = concept;
+  while (current?.parentId && !visited.has(current.parentId)) {
+    visited.add(current.parentId);
+    current = conceptById(current.parentId);
+    if (current) labels.unshift(current.label);
+  }
+  return labels;
+}
+
+function orderedCategoryConcepts(categoryId) {
+  const categoryConcepts = state.concepts.filter((item) => item.category === categoryId);
+  const ids = new Set(categoryConcepts.map((item) => item.id));
+  const children = new Map();
+  categoryConcepts.forEach((item) => {
+    const parent = ids.has(item.parentId) ? item.parentId : "";
+    if (!children.has(parent)) children.set(parent, []);
+    children.get(parent).push(item);
+  });
+  children.forEach((items) => items.sort((a, b) => a.label.localeCompare(b.label, "zh-CN")));
+  const ordered = [];
+  const walk = (parentId, depth) => {
+    for (const item of children.get(parentId) || []) {
+      ordered.push({ concept: item, depth });
+      walk(item.id, depth + 1);
+    }
+  };
+  walk("", 0);
+  return ordered;
+}
+
 function renderBoard() {
   const board = el("categoryBoard");
   board.innerHTML = "";
 
   categories.forEach((category) => {
-    const concepts = state.concepts.filter(
-      (item) =>
-        item.category === category.id &&
-        matchesSearch(item.label, item.definition, item.zoteroTag)
+    const concepts = orderedCategoryConcepts(category.id).filter(({ concept }) =>
+      matchesSearch(concept.label, concept.definition, concept.zoteroTag, ...conceptPath(concept))
     );
     const column = document.createElement("section");
     column.className = "category-column";
@@ -244,13 +285,16 @@ function renderBoard() {
       list.innerHTML = `<div class="empty-column">拖入概念或新建分支</div>`;
     }
 
-    concepts.forEach((concept) => {
+    concepts.forEach(({ concept, depth }) => {
       const card = document.createElement("article");
       card.className = "concept-card";
       card.style.setProperty("--category-color", category.color);
       card.draggable = true;
       card.dataset.id = concept.id;
+      card.dataset.depth = String(Math.min(depth, 4));
+      const pathLabels = conceptPath(concept);
       card.innerHTML = `
+        ${pathLabels.length ? `<div class="concept-path">${escapeHtml(pathLabels.join(" / "))}</div>` : ""}
         <h3>${escapeHtml(concept.label)}</h3>
         <p>${escapeHtml(concept.definition || "尚未填写定义")}</p>
         <div class="concept-meta">
@@ -286,13 +330,24 @@ function paperCountForConcept(id) {
   return state.papers.filter((paper) => paper.conceptIds.includes(id)).length;
 }
 
-function moveConcept(id, category) {
+async function persistConcept(concept, message) {
+  setSyncState("", "正在写入 Obsidian");
+  const result = await api("/api/concepts", {
+    method: "PUT",
+    body: JSON.stringify(concept),
+  });
+  await applyServerState(result, message);
+}
+
+async function moveConcept(id, category) {
   const concept = conceptById(id);
   if (!concept || concept.category === category) return;
-  checkpoint();
-  concept.category = category;
-  saveState(`已移入“${categoryById(category).label}”`);
-  renderAll();
+  try {
+    await persistConcept({ ...concept, category }, `已移入“${categoryById(category).label}”`);
+  } catch (error) {
+    setSyncState("error", "写入失败");
+    showToast(error.message);
+  }
 }
 
 function openInspector(id) {
@@ -303,6 +358,7 @@ function openInspector(id) {
   el("conceptId").value = concept?.id || "";
   el("conceptLabel").value = concept?.label || "";
   el("conceptCategory").value = concept?.category || "object";
+  renderParentOptions(concept?.parentId || "", id);
   el("conceptTag").value = concept?.zoteroTag || "";
   el("conceptDefinition").value = concept?.definition || "";
   el("deleteConceptButton").hidden = isNew;
@@ -323,6 +379,31 @@ function renderCategoryOptions() {
   el("conceptCategory").innerHTML = categories
     .map((item) => `<option value="${item.id}">${item.label}</option>`)
     .join("");
+}
+
+function renderParentOptions(selected = "", currentId = "") {
+  const descendants = new Set();
+  const collect = (id) => {
+    state.concepts
+      .filter((item) => item.parentId === id)
+      .forEach((item) => {
+        descendants.add(item.id);
+        collect(item.id);
+      });
+  };
+  if (currentId) collect(currentId);
+  el("conceptParent").innerHTML = [
+    `<option value="">无上级概念</option>`,
+    ...state.concepts
+      .filter((item) => item.id !== currentId && !descendants.has(item.id))
+      .sort((a, b) => a.label.localeCompare(b.label, "zh-CN"))
+      .map(
+        (item) =>
+          `<option value="${item.id}" ${item.id === selected ? "selected" : ""}>${escapeHtml(
+            [...conceptPath(item), item.label].join(" / ")
+          )}</option>`
+      ),
+  ].join("");
 }
 
 function renderRelationEditor(relations) {
@@ -375,35 +456,41 @@ function collectRelations() {
     .filter((item) => item.target);
 }
 
-function saveConcept(event) {
+async function saveConcept(event) {
   event.preventDefault();
   const label = el("conceptLabel").value.trim();
   if (!label) return;
-  checkpoint();
 
   const payload = {
+    id: el("conceptId").value || undefined,
+    fileName: conceptById(el("conceptId").value)?.fileName || "",
     label,
     category: el("conceptCategory").value,
+    parentId: el("conceptParent").value,
     zoteroTag: el("conceptTag").value.trim(),
     definition: el("conceptDefinition").value.trim(),
     relations: collectRelations(),
   };
 
   const existing = conceptById(el("conceptId").value);
-  if (existing) {
-    Object.assign(existing, payload);
-  } else {
-    const concept = { id: slugify(label), ...payload };
-    state.concepts.push(concept);
-    selectedConceptId = concept.id;
+  try {
+    const result = await api("/api/concepts", {
+      method: "PUT",
+      body: JSON.stringify(payload),
+    });
+    const saved = result.state.concepts.find(
+      (item) => item.fileName === result.fileName || item.label === label
+    );
+    selectedConceptId = saved?.id || null;
+    await applyServerState(result, existing ? "概念已写回 Obsidian" : "新分支已写入 Obsidian");
+    closeInspector();
+  } catch (error) {
+    setSyncState("error", "写入失败");
+    showToast(error.message);
   }
-
-  saveState(existing ? "概念已更新" : "新分支已创建");
-  closeInspector();
-  renderAll();
 }
 
-function deleteConcept() {
+async function deleteConcept() {
   const concept = conceptById(selectedConceptId);
   if (!concept) return;
   const linkedPapers = paperCountForConcept(concept.id);
@@ -412,17 +499,18 @@ function deleteConcept() {
     : `确定删除“${concept.label}”吗？`;
   if (!window.confirm(message)) return;
 
-  checkpoint();
-  state.concepts = state.concepts.filter((item) => item.id !== concept.id);
-  state.concepts.forEach((item) => {
-    item.relations = item.relations.filter((relation) => relation.target !== concept.id);
-  });
-  state.papers.forEach((paper) => {
-    paper.conceptIds = paper.conceptIds.filter((id) => id !== concept.id);
-  });
-  saveState("概念已删除");
-  closeInspector();
-  renderAll();
+  try {
+    setSyncState("", "正在更新 Obsidian");
+    const result = await api(`/api/concepts/${encodeURIComponent(concept.id)}`, {
+      method: "DELETE",
+    });
+    selectedConceptId = null;
+    await applyServerState(result, "概念笔记已删除");
+    closeInspector();
+  } catch (error) {
+    setSyncState("error", "删除失败");
+    showToast(error.message);
+  }
 }
 
 function renderRootList() {
@@ -454,6 +542,15 @@ function connectedGraph(rootId) {
   const nodeIds = new Set([rootId]);
   const links = [];
   state.concepts.forEach((concept) => {
+    if (
+      concept.parentId &&
+      (relationFilter === "all" || relationFilter === "is_a") &&
+      (concept.id === rootId || concept.parentId === rootId)
+    ) {
+      nodeIds.add(concept.id);
+      nodeIds.add(concept.parentId);
+      links.push({ source: concept.id, target: concept.parentId, type: "is_a" });
+    }
     concept.relations.forEach((relation) => {
       if (relationFilter !== "all" && relation.type !== relationFilter) return;
       if (concept.id === rootId || relation.target === rootId) {
@@ -626,30 +723,38 @@ function renderPaperDetail(paper) {
   `;
 
   detail.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      checkpoint();
+    checkbox.addEventListener("change", async () => {
+      const conceptIds = [...paper.conceptIds];
       if (checkbox.checked) {
-        paper.conceptIds = [...new Set([...paper.conceptIds, checkbox.value])];
+        conceptIds.push(checkbox.value);
       } else {
-        paper.conceptIds = paper.conceptIds.filter((id) => id !== checkbox.value);
+        const index = conceptIds.indexOf(checkbox.value);
+        if (index >= 0) conceptIds.splice(index, 1);
       }
-      saveState("论文定位已更新");
-      renderStats();
-      renderPapers();
+      try {
+        setSyncState("", "正在写入论文定位");
+        const result = await api(`/api/papers/${encodeURIComponent(paper.id)}`, {
+          method: "PUT",
+          body: JSON.stringify({ conceptIds: [...new Set(conceptIds)] }),
+        });
+        await applyServerState(result, "论文定位已写回 Obsidian");
+      } catch (error) {
+        setSyncState("error", "论文定位写入失败");
+        showToast(error.message);
+        renderPapers();
+      }
     });
   });
   el("quickNewConcept").addEventListener("click", () => openInspector());
   initializeIcons();
 }
 
-function addPaper(event) {
+async function addPaper(event) {
   event.preventDefault();
   if (event.submitter?.value === "cancel") return;
   const title = el("paperTitle").value.trim();
   if (!title) return;
-  checkpoint();
   const paper = {
-    id: slugify(title),
     title,
     authors: el("paperAuthors").value.trim(),
     year: el("paperYear").value.trim(),
@@ -657,13 +762,25 @@ function addPaper(event) {
     summary: el("paperSummary").value.trim(),
     conceptIds: [],
   };
-  state.papers.unshift(paper);
-  selectedPaperId = paper.id;
-  saveState("论文已加入待定位区");
-  el("paperDialog").close();
-  el("paperForm").reset();
-  switchView("papers");
-  renderAll();
+  try {
+    setSyncState("", "正在创建论文笔记");
+    const result = await api("/api/papers", {
+      method: "POST",
+      body: JSON.stringify(paper),
+    });
+    await applyServerState(result, "论文定位卡已写入 Obsidian");
+    selectedPaperId =
+      result.state.papers.find((item) => item.title === title)?.id ||
+      result.state.papers[0]?.id ||
+      null;
+    el("paperDialog").close();
+    el("paperForm").reset();
+    switchView("papers");
+    renderAll();
+  } catch (error) {
+    setSyncState("error", "论文创建失败");
+    showToast(error.message);
+  }
 }
 
 function switchView(view) {
@@ -686,36 +803,6 @@ function exportData() {
   link.click();
   URL.revokeObjectURL(url);
   showToast("JSON 已导出");
-}
-
-function importData(file) {
-  if (!file) return;
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      const imported = JSON.parse(reader.result);
-      if (!Array.isArray(imported.concepts) || !Array.isArray(imported.papers)) {
-        throw new Error("Invalid structure");
-      }
-      checkpoint();
-      state = imported;
-      saveState("数据已导入");
-      renderAll();
-    } catch (error) {
-      showToast("导入失败：JSON 结构不正确");
-    }
-  };
-  reader.readAsText(file);
-}
-
-function resetData() {
-  if (!window.confirm("恢复示例数据会覆盖当前浏览器中的修改，确定继续吗？")) return;
-  checkpoint();
-  state = clone(initialState);
-  selectedConceptId = null;
-  selectedPaperId = null;
-  saveState("已恢复示例数据");
-  renderAll();
 }
 
 function showToast(message) {
@@ -772,11 +859,8 @@ function bindEvents() {
   el("conceptForm").addEventListener("submit", saveConcept);
   el("addRelationButton").addEventListener("click", () => addRelationRow());
   el("deleteConceptButton").addEventListener("click", deleteConcept);
-  el("undoButton").addEventListener("click", undo);
   el("exportButton").addEventListener("click", exportData);
-  el("importButton").addEventListener("click", () => el("importFile").click());
-  el("importFile").addEventListener("change", (event) => importData(event.target.files[0]));
-  el("resetButton").addEventListener("click", resetData);
+  el("refreshButton").addEventListener("click", () => loadFromObsidian());
   el("addPaperButton").addEventListener("click", () => el("paperDialog").showModal());
   el("paperForm").addEventListener("submit", addPaper);
   window.addEventListener("resize", () => {
@@ -784,14 +868,26 @@ function bindEvents() {
   });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") closeInspector();
-    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") {
-      event.preventDefault();
-      undo();
-    }
   });
 }
 
 renderCategoryOptions();
 bindEvents();
 renderAll();
-updateUndoState();
+loadFromObsidian();
+setInterval(async () => {
+  try {
+    const next = await api("/api/state");
+    if (next.version === stateVersion) return;
+    if (el("inspector").classList.contains("open") || el("paperDialog").open) {
+      setSyncState("", "Obsidian 有新修改，关闭编辑器后刷新");
+      return;
+    }
+    state = { concepts: next.concepts, papers: next.papers };
+    stateVersion = next.version;
+    renderAll();
+    setSyncState("synced", "已读取 Obsidian 新修改");
+  } catch {
+    setSyncState("error", "Obsidian 同步中断");
+  }
+}, 2000);

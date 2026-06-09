@@ -41,10 +41,20 @@
       "color": "1"
     },
     {
+      "id": "concept-ce8ce09c94edcb22",
+      "type": "file",
+      "file": "04_Concept_Nodes/膜材料.md",
+      "x": 360,
+      "y": 220,
+      "width": 300,
+      "height": 180,
+      "color": "2"
+    },
+    {
       "id": "concept-54c9d69e4ab86043",
       "type": "file",
       "file": "04_Concept_Nodes/表面正电化.md",
-      "x": 360,
+      "x": 720,
       "y": 220,
       "width": 300,
       "height": 180,
@@ -54,8 +64,8 @@
       "id": "concept-ba430b1c39f61cfb",
       "type": "file",
       "file": "04_Concept_Nodes/静电排斥.md",
-      "x": 720,
-      "y": 220,
+      "x": 0,
+      "y": 440,
       "width": 300,
       "height": 180,
       "color": "4"
@@ -64,7 +74,7 @@
       "id": "paper-37974a325a0b07d7",
       "type": "file",
       "file": "02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md",
-      "x": 0,
+      "x": 360,
       "y": 440,
       "width": 300,
       "height": 160,
@@ -73,10 +83,10 @@
   ],
   "edges": [
     {
-      "id": "edge-89cab3cf5c5f273b",
+      "id": "edge-506ee66b09140049",
       "fromNode": "concept-f4bb832fba83254f",
       "fromSide": "right",
-      "toNode": "concept-bcea1c87f145b817",
+      "toNode": "concept-ce8ce09c94edcb22",
       "toSide": "left",
       "label": "is_a"
     },
@@ -87,6 +97,14 @@
       "toNode": "concept-05414060b73bbbcf",
       "toSide": "left",
       "label": "used_for"
+    },
+    {
+      "id": "edge-fba182e1c819c5b5",
+      "fromNode": "concept-ce8ce09c94edcb22",
+      "fromSide": "right",
+      "toNode": "concept-bcea1c87f145b817",
+      "toSide": "left",
+      "label": "is_a"
     },
     {
       "id": "edge-89fed1e26b582aa1",
