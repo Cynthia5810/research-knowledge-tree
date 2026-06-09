@@ -14,6 +14,8 @@ paper_role:
 reading_status: unread
 analysis_depth: position_only
 
+concepts: []
+
 tree_position:
   domain: 膜
   function_class: ""

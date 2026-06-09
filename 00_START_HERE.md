@@ -32,6 +32,8 @@
 
 ## 主要入口
 
+- `03_Knowledge_Tree/mvp_knowledge_graph.canvas`：当前最小可用版本，可在 Obsidian 中拖动节点和调整连线
+- `04_Concept_Nodes/`：标签定义及标签之间的逻辑关系
 - `03_Knowledge_Tree/membrane_tree.md`：主知识树
 - `03_Knowledge_Tree/lithium_magnesium_separation_tree.md`：锂镁分离方向树
 - `03_Knowledge_Tree/generated_tree.md`：脚本生成的层级树
@@ -43,11 +45,12 @@
 ## 推荐工作流
 
 1. 在 Zotero 中保存论文和 PDF。
-2. 综述论文用 `Review Map` 模板整理到 `01_Review_Maps/`。
-3. 原始论文用 `Paper Position Card` 模板整理到 `02_Paper_Position_Cards/`。
-4. 从论文中提取可复用 claim，必要时放入 `04_Claim_Evidence_Records/`。
-5. 手动填写或让我帮助填写 `tree_position`、`paper_role` 和 `claim_records`。
-6. 运行 `08_Scripts/generate_tree.js`，生成层级树和文献定位表。
+2. 给论文分配少量受控标签，并在定位卡的 `concepts` 字段记录对应概念。
+3. 在 `04_Concept_Nodes/` 中维护标签的定义与关系。
+4. 运行 `npm run generate:mvp`，生成关系图和 Obsidian Canvas。
+5. 在 Canvas 中拖动节点，检查这套关系是否符合你的理解。
+
+综述地图、Claim/Evidence 和完整论文分析仍然保留，但暂时不作为 MVP 的必需步骤。
 
 ## Zotero 同步
 

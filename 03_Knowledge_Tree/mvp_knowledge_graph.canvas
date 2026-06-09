@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "concept-05414060b73bbbcf",
+      "type": "file",
+      "file": "04_Concept_Nodes/Li-Mg分离.md",
+      "x": 0,
+      "y": 0,
+      "width": 300,
+      "height": 180,
+      "color": "6"
+    },
+    {
+      "id": "concept-85a95296490a1ae7",
+      "type": "file",
+      "file": "04_Concept_Nodes/Li-Mg选择性.md",
+      "x": 360,
+      "y": 0,
+      "width": 300,
+      "height": 180,
+      "color": "5"
+    },
+    {
+      "id": "concept-f4bb832fba83254f",
+      "type": "file",
+      "file": "04_Concept_Nodes/离子选择膜.md",
+      "x": 720,
+      "y": 0,
+      "width": 300,
+      "height": 180,
+      "color": "2"
+    },
+    {
+      "id": "concept-bcea1c87f145b817",
+      "type": "file",
+      "file": "04_Concept_Nodes/膜.md",
+      "x": 0,
+      "y": 220,
+      "width": 300,
+      "height": 180,
+      "color": "1"
+    },
+    {
+      "id": "concept-54c9d69e4ab86043",
+      "type": "file",
+      "file": "04_Concept_Nodes/表面正电化.md",
+      "x": 360,
+      "y": 220,
+      "width": 300,
+      "height": 180,
+      "color": "3"
+    },
+    {
+      "id": "concept-ba430b1c39f61cfb",
+      "type": "file",
+      "file": "04_Concept_Nodes/静电排斥.md",
+      "x": 720,
+      "y": 220,
+      "width": 300,
+      "height": 180,
+      "color": "4"
+    },
+    {
+      "id": "paper-37974a325a0b07d7",
+      "type": "file",
+      "file": "02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md",
+      "x": 0,
+      "y": 440,
+      "width": 300,
+      "height": 160,
+      "color": "6"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-89cab3cf5c5f273b",
+      "fromNode": "concept-f4bb832fba83254f",
+      "fromSide": "right",
+      "toNode": "concept-bcea1c87f145b817",
+      "toSide": "left",
+      "label": "is_a"
+    },
+    {
+      "id": "edge-8dd0e30e64031075",
+      "fromNode": "concept-f4bb832fba83254f",
+      "fromSide": "right",
+      "toNode": "concept-05414060b73bbbcf",
+      "toSide": "left",
+      "label": "used_for"
+    },
+    {
+      "id": "edge-89fed1e26b582aa1",
+      "fromNode": "concept-54c9d69e4ab86043",
+      "fromSide": "right",
+      "toNode": "concept-ba430b1c39f61cfb",
+      "toSide": "left",
+      "label": "acts_via"
+    },
+    {
+      "id": "edge-bd01aa64bf55002c",
+      "fromNode": "concept-54c9d69e4ab86043",
+      "fromSide": "right",
+      "toNode": "concept-85a95296490a1ae7",
+      "toSide": "left",
+      "label": "improves"
+    },
+    {
+      "id": "edge-fb230945e27cd947",
+      "fromNode": "concept-ba430b1c39f61cfb",
+      "fromSide": "right",
+      "toNode": "concept-85a95296490a1ae7",
+      "toSide": "left",
+      "label": "improves"
+    },
+    {
+      "id": "edge-cebb71f31e582343",
+      "fromNode": "paper-37974a325a0b07d7",
+      "fromSide": "right",
+      "toNode": "concept-f4bb832fba83254f",
+      "toSide": "left",
+      "label": "tagged"
+    },
+    {
+      "id": "edge-1100e7ce16783e72",
+      "fromNode": "paper-37974a325a0b07d7",
+      "fromSide": "right",
+      "toNode": "concept-05414060b73bbbcf",
+      "toSide": "left",
+      "label": "tagged"
+    },
+    {
+      "id": "edge-65356b14c548d7d5",
+      "fromNode": "paper-37974a325a0b07d7",
+      "fromSide": "right",
+      "toNode": "concept-54c9d69e4ab86043",
+      "toSide": "left",
+      "label": "tagged"
+    },
+    {
+      "id": "edge-49de752bc57e020a",
+      "fromNode": "paper-37974a325a0b07d7",
+      "fromSide": "right",
+      "toNode": "concept-ba430b1c39f61cfb",
+      "toSide": "left",
+      "label": "tagged"
+    },
+    {
+      "id": "edge-54a02bc68bc21ba5",
+      "fromNode": "paper-37974a325a0b07d7",
+      "fromSide": "right",
+      "toNode": "concept-85a95296490a1ae7",
+      "toSide": "left",
+      "label": "tagged"
+    }
+  ]
+}

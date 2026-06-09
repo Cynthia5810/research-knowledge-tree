@@ -6,7 +6,8 @@
   "scripts": {
     "triage:zotero": "node 08_Scripts/zotero_triage.js",
     "generate:tree": "node 08_Scripts/generate_tree.js",
-    "verify": "node 08_Scripts/generate_tree.js"
+    "generate:mvp": "node 08_Scripts/generate_mvp_graph.js",
+    "verify": "node 08_Scripts/generate_tree.js && node 08_Scripts/generate_mvp_graph.js"
   },
   "engines": {
     "node": ">=18"

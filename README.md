@@ -101,6 +101,26 @@ flowchart LR
 
 示例：[claim_cb_cob_positive_mcem_limg_001.md](04_Claim_Evidence_Records/claim_cb_cob_positive_mcem_limg_001.md)
 
+## 当前最小版本
+
+当前 MVP 只验证两个核心对象：
+
+- `Concept`：标签的定义以及标签之间的逻辑关系。
+- `Paper`：论文及其对应的受控概念标签。
+
+概念关系暂时限制为 `is_a`、`used_for`、`acts_via` 和 `improves`。运行：
+
+```bash
+npm run generate:mvp
+```
+
+会生成：
+
+- `03_Knowledge_Tree/mvp_knowledge_graph.md`：便于预览和版本管理的 Mermaid 图。
+- `03_Knowledge_Tree/mvp_knowledge_graph.canvas`：可在 Obsidian 中拖动、排列和检查的 Canvas。
+
+这一阶段仍由 Zotero 管理论文和 PDF，由 Obsidian 管理概念关系。Claim/Evidence、引用共识和自动标签将在这条最小链路验证后再逐步加入。
+
 ## 仓库结构
 
 ```text

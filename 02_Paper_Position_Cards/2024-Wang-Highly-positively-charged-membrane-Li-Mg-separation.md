@@ -17,6 +17,8 @@ paper_role:
 reading_status: first_pass
 analysis_depth: deep_positioning
 
+concepts: [离子选择膜, Li-Mg分离, 表面正电化, 静电排斥, Li-Mg选择性]
+
 tree_position:
   domain: 膜
   function_class: ion_selective_membrane
@@ -176,4 +178,3 @@ scite:
 ## 13. 一句话定位
 
 这篇论文是：在 Li+/Mg2+ 离子选择膜分支中，通过 Fe3+ 诱导的 CB/COB 竞争反应构建薄而高正电的选择层，缓解了选择性/通量/电阻之间的权衡，但仍需真实卤水和长期稳定性验证。
-
