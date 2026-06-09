@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Research Knowledge Tree interactive ontology editor">
+  <title>Research Knowledge Tree</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+SC:wght@400;500;600&family=Newsreader:opsz,wght@6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">RKT</div>
+        <div>
+          <h1>Research Knowledge Tree</h1>
+          <p>科研概念分类与文献定位</p>
+        </div>
+      </div>
+
+      <div class="topbar-actions">
+        <label class="search">
+          <span data-icon="search" aria-hidden="true"></span>
+          <input id="searchInput" type="search" placeholder="搜索概念或论文" autocomplete="off">
+        </label>
+        <button class="icon-button" id="undoButton" title="撤销" aria-label="撤销">
+          <span data-icon="undo-2"></span>
+        </button>
+        <button class="icon-button" id="exportButton" title="导出 JSON" aria-label="导出 JSON">
+          <span data-icon="download"></span>
+        </button>
+        <button class="icon-button" id="importButton" title="导入 JSON" aria-label="导入 JSON">
+          <span data-icon="upload"></span>
+        </button>
+        <button class="icon-button" id="resetButton" title="恢复示例数据" aria-label="恢复示例数据">
+          <span data-icon="rotate-ccw"></span>
+        </button>
+        <input id="importFile" type="file" accept="application/json" hidden>
+      </div>
+    </header>
+
+    <nav class="view-tabs" aria-label="视图">
+      <button class="view-tab active" data-view="board">
+        <span data-icon="columns-3"></span>
+        分类板
+      </button>
+      <button class="view-tab" data-view="tree">
+        <span data-icon="git-fork"></span>
+        关系树
+      </button>
+      <button class="view-tab" data-view="papers">
+        <span data-icon="files"></span>
+        文献定位
+      </button>
+      <div class="stats" id="stats"></div>
+    </nav>
+
+    <main class="workspace">
+      <section class="view active" id="boardView">
+        <div class="section-toolbar">
+          <div>
+            <h2>概念分类板</h2>
+            <p>拖动概念调整类别；点击概念编辑定义和关系。</p>
+          </div>
+          <button class="primary-button" id="addConceptButton">
+            <span data-icon="plus"></span>
+            新建概念
+          </button>
+        </div>
+        <div class="category-board" id="categoryBoard"></div>
+      </section>
+
+      <section class="view" id="treeView">
+        <div class="section-toolbar">
+          <div>
+            <h2>关系树</h2>
+            <p>从一个概念出发，查看它如何连接材料、方法、机制、性能与应用。</p>
+          </div>
+          <div class="segmented-control" id="relationFilter" aria-label="关系过滤">
+            <button class="active" data-relation="all">全部</button>
+            <button data-relation="is_a">层级</button>
+            <button data-relation="used_for">应用</button>
+            <button data-relation="acts_via">机制</button>
+            <button data-relation="improves">性能</button>
+          </div>
+        </div>
+        <div class="tree-layout">
+          <aside class="root-list">
+            <div class="panel-label">选择起点</div>
+            <div id="rootList"></div>
+          </aside>
+          <div class="tree-canvas" id="treeCanvas">
+            <svg id="treeSvg" aria-label="概念关系图"></svg>
+            <div class="tree-empty" id="treeEmpty">
+              <span data-icon="git-fork"></span>
+              <p>选择左侧概念查看关系</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="papersView">
+        <div class="section-toolbar">
+          <div>
+            <h2>文献定位</h2>
+            <p>新论文先进入待定位区，再挂到一个或多个概念节点。</p>
+          </div>
+          <button class="primary-button" id="addPaperButton">
+            <span data-icon="file-plus-2"></span>
+            添加论文
+          </button>
+        </div>
+        <div class="paper-layout">
+          <div class="paper-list-panel">
+            <div class="paper-filter">
+              <button class="active" data-paper-filter="all">全部</button>
+              <button data-paper-filter="unplaced">待定位</button>
+              <button data-paper-filter="placed">已定位</button>
+            </div>
+            <div id="paperList"></div>
+          </div>
+          <div class="paper-detail" id="paperDetail">
+            <div class="empty-state">
+              <span data-icon="mouse-pointer-2"></span>
+              <p>选择一篇论文开始定位</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside class="inspector" id="inspector" aria-hidden="true">
+    <div class="inspector-header">
+      <div>
+        <span class="eyebrow">概念节点</span>
+        <h2 id="inspectorTitle">编辑概念</h2>
+      </div>
+      <button class="icon-button" id="closeInspector" aria-label="关闭">
+        <span data-icon="x"></span>
+      </button>
+    </div>
+    <form id="conceptForm">
+      <input type="hidden" id="conceptId">
+      <label>
+        名称
+        <input id="conceptLabel" required maxlength="60">
+      </label>
+      <label>
+        类别
+        <select id="conceptCategory"></select>
+      </label>
+      <label>
+        Zotero 标准标签
+        <input id="conceptTag" placeholder="例如：机制/静电排斥">
+      </label>
+      <label>
+        定义
+        <textarea id="conceptDefinition" rows="4"></textarea>
+      </label>
+
+      <div class="form-section">
+        <div class="form-section-heading">
+          <h3>逻辑关系</h3>
+          <button type="button" class="text-button" id="addRelationButton">
+            <span data-icon="plus"></span>
+            添加
+          </button>
+        </div>
+        <div id="relationEditor"></div>
+      </div>
+
+      <div class="form-actions">
+        <button type="button" class="danger-button" id="deleteConceptButton">
+          <span data-icon="trash-2"></span>
+          删除
+        </button>
+        <button type="submit" class="primary-button">
+          <span data-icon="save"></span>
+          保存
+        </button>
+      </div>
+    </form>
+  </aside>
+
+  <div class="modal-backdrop" id="modalBackdrop" hidden></div>
+
+  <dialog id="paperDialog">
+    <form method="dialog" id="paperForm">
+      <div class="dialog-header">
+        <div>
+          <span class="eyebrow">文献收件箱</span>
+          <h2>添加论文</h2>
+        </div>
+        <button class="icon-button" value="cancel" aria-label="关闭">
+          <span data-icon="x"></span>
+        </button>
+      </div>
+      <label>
+        题目
+        <textarea id="paperTitle" rows="2" required></textarea>
+      </label>
+      <div class="form-grid">
+        <label>
+          作者
+          <input id="paperAuthors">
+        </label>
+        <label>
+          年份
+          <input id="paperYear" inputmode="numeric" maxlength="4">
+        </label>
+      </div>
+      <label>
+        DOI / Zotero Key
+        <input id="paperIdentifier">
+      </label>
+      <label>
+        一句话定位
+        <textarea id="paperSummary" rows="3"></textarea>
+      </label>
+      <div class="dialog-actions">
+        <button class="secondary-button" value="cancel">取消</button>
+        <button class="primary-button" value="default" id="savePaperButton">
+          <span data-icon="plus"></span>
+          加入待定位区
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="lucide-subset.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
