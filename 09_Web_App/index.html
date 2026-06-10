@@ -44,6 +44,10 @@
         <span data-icon="columns-3"></span>
         分类板
       </button>
+      <button class="view-tab" data-view="focus">
+        <span data-icon="scan-search"></span>
+        焦点视图
+      </button>
       <button class="view-tab" data-view="tree">
         <span data-icon="git-fork"></span>
         关系树
@@ -68,6 +72,22 @@
           </button>
         </div>
         <div class="category-board" id="categoryBoard"></div>
+      </section>
+
+      <section class="view" id="focusView">
+        <div class="section-toolbar">
+          <div>
+            <h2>焦点视图</h2>
+            <p>任何概念都可以成为根：按维度展开它的上下游，点击任意节点继续追溯。</p>
+          </div>
+        </div>
+        <div class="focus-layout">
+          <aside class="root-list">
+            <div class="panel-label">选择焦点</div>
+            <div id="focusList"></div>
+          </aside>
+          <div class="focus-canvas" id="focusCanvas"></div>
+        </div>
       </section>
 
       <section class="view" id="treeView">

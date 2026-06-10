@@ -15,7 +15,21 @@ const types = {
   ".json": "application/json; charset=utf-8",
   ".svg": "image/svg+xml",
 };
-const relationTypes = ["used_for", "acts_via", "improves", "related_to"];
+const relationTypes = [
+  "component_of",
+  "made_of",
+  "has_property",
+  "prepared_by",
+  "used_for",
+  "acts_via",
+  "improves",
+  "related_to",
+];
+const relationPattern = new RegExp(
+  `^-\\s+(is_a|${relationTypes.join("|")}):\\s+\\[\\[([^\\]|]+)(?:\\|[^\\]]+)?\\]\\]`,
+  "gm"
+);
+const paperLinkTypes = ["extends", "improves", "challenges", "complements"];
 
 function markdownFiles(dir) {
   if (!fs.existsSync(dir)) return [];
@@ -78,13 +92,46 @@ function parseRelations(text) {
   const relationSection = section(text, "关系");
   const relations = [];
   let parentLabel = "";
-  for (const match of relationSection.matchAll(
-    /^-\s+(is_a|used_for|acts_via|improves|related_to):\s+\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/gm
-  )) {
+  for (const match of relationSection.matchAll(relationPattern)) {
     if (match[1] === "is_a" && !parentLabel) parentLabel = match[2];
     else relations.push({ type: match[1], targetLabel: match[2] });
   }
   return { parentLabel, relations };
+}
+
+function frontmatterBlock(text) {
+  return text.match(/^---\s*\r?\n([\s\S]*?)\r?\n---/)?.[1] || "";
+}
+
+function parseRelatedPapers(text) {
+  const lines = frontmatterBlock(text).split(/\r?\n/);
+  const start = lines.findIndex((line) => /^related_papers:\s*$/.test(line));
+  if (start < 0) return [];
+  const links = [];
+  let currentType = "";
+  for (let index = start + 1; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (line.trim() && !/^[ \t]/.test(line)) break;
+    const typeMatch = line.match(
+      new RegExp(`^[ \\t]+(${paperLinkTypes.join("|")}):\\s*(.*)$`)
+    );
+    if (typeMatch) {
+      currentType = typeMatch[1];
+      const inline = typeMatch[2].trim();
+      if (inline.startsWith("[") && inline.endsWith("]")) {
+        for (const item of inline.slice(1, -1).split(",")) {
+          const ref = unquote(item.trim());
+          if (ref) links.push({ type: currentType, ref });
+        }
+      }
+      continue;
+    }
+    const itemMatch = line.match(/^[ \t]+-\s+(.+)$/);
+    if (itemMatch && currentType) {
+      links.push({ type: currentType, ref: unquote(itemMatch[1].trim()) });
+    }
+  }
+  return links;
 }
 
 function readState() {
@@ -119,7 +166,7 @@ function readState() {
       .filter((relation) => relation.target),
   }));
 
-  const papers = markdownFiles(paperDir)
+  const rawPapers = markdownFiles(paperDir)
     .map((name) => {
       const text = fs.readFileSync(path.join(paperDir, name), "utf8");
       const meta = parseFrontmatter(text);
@@ -132,11 +179,30 @@ function readState() {
         authors: meta.authors || "",
         year: String(meta.year || ""),
         identifier: meta.doi || meta.zotero_key || "",
+        doi: meta.doi || "",
+        zoteroKey: meta.zotero_key || "",
+        citekey: meta.citekey || "",
         summary: firstContentLine(section(text, "13. 一句话定位")),
         conceptIds: conceptLabels.map((label) => idByLabel.get(label)).filter(Boolean),
+        rawLinks: parseRelatedPapers(text),
       };
     })
     .filter(Boolean);
+
+  const paperIdByRef = new Map();
+  for (const paper of rawPapers) {
+    for (const ref of [paper.id, paper.doi, paper.zoteroKey, paper.citekey]) {
+      if (ref) paperIdByRef.set(ref, paper.id);
+    }
+  }
+  const papers = rawPapers.map(({ rawLinks, ...paper }) => ({
+    ...paper,
+    relatedPapers: rawLinks.map((link) => ({
+      type: link.type,
+      ref: link.ref,
+      paperId: paperIdByRef.get(link.ref) || "",
+    })),
+  }));
 
   const signature = [...markdownFiles(conceptDir), ...markdownFiles(paperDir)]
     .map((name) => {

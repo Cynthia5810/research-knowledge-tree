@@ -21,11 +21,21 @@
       "color": "5"
     },
     {
+      "id": "concept-5612d81de4250bac",
+      "type": "file",
+      "file": "04_Concept_Nodes/电渗析.md",
+      "x": 720,
+      "y": 0,
+      "width": 300,
+      "height": 180,
+      "color": "3"
+    },
+    {
       "id": "concept-f4bb832fba83254f",
       "type": "file",
       "file": "04_Concept_Nodes/离子选择膜.md",
-      "x": 720,
-      "y": 0,
+      "x": 0,
+      "y": 220,
       "width": 300,
       "height": 180,
       "color": "2"
@@ -34,7 +44,7 @@
       "id": "concept-bcea1c87f145b817",
       "type": "file",
       "file": "04_Concept_Nodes/膜.md",
-      "x": 0,
+      "x": 360,
       "y": 220,
       "width": 300,
       "height": 180,
@@ -44,7 +54,7 @@
       "id": "concept-ce8ce09c94edcb22",
       "type": "file",
       "file": "04_Concept_Nodes/膜材料.md",
-      "x": 360,
+      "x": 720,
       "y": 220,
       "width": 300,
       "height": 180,
@@ -54,8 +64,8 @@
       "id": "concept-54c9d69e4ab86043",
       "type": "file",
       "file": "04_Concept_Nodes/表面正电化.md",
-      "x": 720,
-      "y": 220,
+      "x": 0,
+      "y": 440,
       "width": 300,
       "height": 180,
       "color": "3"
@@ -64,7 +74,7 @@
       "id": "concept-ba430b1c39f61cfb",
       "type": "file",
       "file": "04_Concept_Nodes/静电排斥.md",
-      "x": 0,
+      "x": 360,
       "y": 440,
       "width": 300,
       "height": 180,
@@ -74,7 +84,7 @@
       "id": "paper-37974a325a0b07d7",
       "type": "file",
       "file": "02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md",
-      "x": 360,
+      "x": 720,
       "y": 440,
       "width": 300,
       "height": 160,
@@ -82,6 +92,14 @@
     }
   ],
   "edges": [
+    {
+      "id": "edge-5b92458286c51f0f",
+      "fromNode": "concept-5612d81de4250bac",
+      "fromSide": "right",
+      "toNode": "concept-05414060b73bbbcf",
+      "toSide": "left",
+      "label": "used_for"
+    },
     {
       "id": "edge-506ee66b09140049",
       "fromNode": "concept-f4bb832fba83254f",
@@ -97,6 +115,30 @@
       "toNode": "concept-05414060b73bbbcf",
       "toSide": "left",
       "label": "used_for"
+    },
+    {
+      "id": "edge-197d616aa44c9b02",
+      "fromNode": "concept-f4bb832fba83254f",
+      "fromSide": "right",
+      "toNode": "concept-5612d81de4250bac",
+      "toSide": "left",
+      "label": "component_of"
+    },
+    {
+      "id": "edge-2457b2f7754654e5",
+      "fromNode": "concept-f4bb832fba83254f",
+      "fromSide": "right",
+      "toNode": "concept-54c9d69e4ab86043",
+      "toSide": "left",
+      "label": "prepared_by"
+    },
+    {
+      "id": "edge-a0b87ffde0c134da",
+      "fromNode": "concept-f4bb832fba83254f",
+      "fromSide": "right",
+      "toNode": "concept-85a95296490a1ae7",
+      "toSide": "left",
+      "label": "has_property"
     },
     {
       "id": "edge-fba182e1c819c5b5",

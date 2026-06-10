@@ -52,7 +52,7 @@ function readConcepts() {
       const label = meta.label || path.basename(entry.name, ".md");
       const relations = [];
       for (const match of entry.text.matchAll(
-        /^-\s+(is_a|used_for|acts_via|improves):\s+\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/gm
+        /^-\s+(is_a|component_of|made_of|has_property|prepared_by|used_for|acts_via|improves|related_to):\s+\[\[([^\]|]+)(?:\|[^\]]+)?\]\]/gm
       )) {
         relations.push({ type: match[1], target: match[2] });
       }

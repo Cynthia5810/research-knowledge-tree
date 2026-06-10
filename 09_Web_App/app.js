@@ -10,11 +10,55 @@ const categories = [
 ];
 
 const relationTypes = [
-  { id: "used_for", label: "用于" },
-  { id: "acts_via", label: "通过机制" },
-  { id: "improves", label: "改善" },
-  { id: "related_to", label: "相关" },
+  { id: "component_of", label: "是…的组件", short: "组成" },
+  { id: "made_of", label: "材质是", short: "材质" },
+  { id: "has_property", label: "具有性质", short: "性质" },
+  { id: "prepared_by", label: "制备方法是", short: "制备" },
+  { id: "used_for", label: "用于", short: "应用" },
+  { id: "acts_via", label: "通过机制", short: "机制" },
+  { id: "improves", label: "改善", short: "性能" },
+  { id: "related_to", label: "相关", short: "相关" },
 ];
+
+const facetMeta = {
+  is_a: { forward: "上级类别", reverse: "子类" },
+  component_of: { forward: "所属系统 / 工艺", reverse: "组成部分" },
+  made_of: { forward: "材质", reverse: "用它制成" },
+  has_property: { forward: "性质", reverse: "拥有此性质" },
+  prepared_by: { forward: "制备方法", reverse: "可用于制备" },
+  used_for: { forward: "应用场景", reverse: "实现途径" },
+  acts_via: { forward: "作用机制", reverse: "依赖此机制" },
+  improves: { forward: "改善", reverse: "被它改善" },
+  related_to: { forward: "相关概念", reverse: "相关概念" },
+};
+
+const facetOrder = [
+  { type: "is_a", direction: "forward" },
+  { type: "is_a", direction: "reverse" },
+  { type: "component_of", direction: "reverse" },
+  { type: "component_of", direction: "forward" },
+  { type: "made_of", direction: "forward" },
+  { type: "made_of", direction: "reverse" },
+  { type: "has_property", direction: "forward" },
+  { type: "has_property", direction: "reverse" },
+  { type: "prepared_by", direction: "forward" },
+  { type: "prepared_by", direction: "reverse" },
+  { type: "used_for", direction: "forward" },
+  { type: "used_for", direction: "reverse" },
+  { type: "acts_via", direction: "forward" },
+  { type: "acts_via", direction: "reverse" },
+  { type: "improves", direction: "forward" },
+  { type: "improves", direction: "reverse" },
+  { type: "related_to", direction: "forward" },
+  { type: "related_to", direction: "reverse" },
+];
+
+const paperLinkLabels = {
+  extends: "承接 / 扩展",
+  improves: "改进",
+  challenges: "质疑",
+  complements: "互补",
+};
 
 const initialState = {
   concepts: [
@@ -35,7 +79,18 @@ const initialState = {
       relations: [
         { type: "is_a", target: "membrane" },
         { type: "used_for", target: "li-mg-separation" },
+        { type: "component_of", target: "electrodialysis" },
+        { type: "prepared_by", target: "positive-surface" },
+        { type: "has_property", target: "li-mg-selectivity" },
       ],
+    },
+    {
+      id: "electrodialysis",
+      label: "电渗析",
+      category: "method",
+      zoteroTag: "方法/电渗析",
+      definition: "在电场驱动下，利用离子交换膜对离子的选择透过实现分离的过程。",
+      relations: [{ type: "used_for", target: "li-mg-separation" }],
     },
     {
       id: "positive-surface",
@@ -106,6 +161,8 @@ let stateVersion = "";
 let currentView = "board";
 let selectedConceptId = null;
 let selectedPaperId = null;
+let focusId = null;
+let focusTrail = [];
 let relationFilter = "all";
 let paperFilter = "all";
 let searchTerm = "";
@@ -142,6 +199,8 @@ async function loadFromObsidian({ quiet = false } = {}) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     if (!selectionExists) selectedConceptId = null;
     if (!next.papers.some((item) => item.id === selectedPaperId)) selectedPaperId = null;
+    if (!next.concepts.some((item) => item.id === focusId)) focusId = null;
+    focusTrail = focusTrail.filter((id) => next.concepts.some((item) => item.id === id));
     renderAll();
     setSyncState("synced", "已与 Obsidian 同步");
   } catch (error) {
@@ -208,6 +267,7 @@ function renderAll() {
   renderBoard();
   renderRootList();
   renderTree();
+  renderFocus();
   renderPapers();
   initializeIcons();
 }
@@ -644,6 +704,200 @@ function renderTree() {
   });
 }
 
+function focusOn(id, { resetTrail = false } = {}) {
+  if (!conceptById(id)) return;
+  if (resetTrail) {
+    focusTrail = [];
+  } else if (focusId && focusId !== id) {
+    focusTrail.push(focusId);
+    if (focusTrail.length > 12) focusTrail.shift();
+  }
+  focusId = id;
+  renderFocus();
+  initializeIcons();
+}
+
+function incomingRelations(id) {
+  const incoming = [];
+  state.concepts.forEach((concept) => {
+    concept.relations.forEach((relation) => {
+      if (relation.target === id) incoming.push({ type: relation.type, sourceId: concept.id });
+    });
+  });
+  return incoming;
+}
+
+function facetGroups(concept) {
+  const groups = [];
+  const incoming = incomingRelations(concept.id);
+  for (const { type, direction } of facetOrder) {
+    let ids = [];
+    if (type === "is_a") {
+      ids =
+        direction === "forward"
+          ? concept.parentId
+            ? [concept.parentId]
+            : []
+          : state.concepts.filter((item) => item.parentId === concept.id).map((item) => item.id);
+    } else if (direction === "forward") {
+      ids = concept.relations.filter((item) => item.type === type).map((item) => item.target);
+    } else {
+      ids = incoming.filter((item) => item.type === type).map((item) => item.sourceId);
+    }
+    if (type === "related_to" && direction === "reverse") {
+      const forwardSet = new Set(
+        concept.relations.filter((item) => item.type === "related_to").map((item) => item.target)
+      );
+      ids = ids.filter((id) => !forwardSet.has(id));
+    }
+    const nodes = [...new Set(ids)].map(conceptById).filter(Boolean);
+    if (nodes.length) groups.push({ label: facetMeta[type][direction], type, direction, nodes });
+  }
+  return groups;
+}
+
+function renderFocusList() {
+  const list = el("focusList");
+  list.innerHTML = "";
+  const visible = state.concepts
+    .filter((concept) => matchesSearch(concept.label, concept.definition, concept.zoteroTag))
+    .sort((a, b) => a.label.localeCompare(b.label, "zh-CN"));
+  visible.forEach((concept) => {
+    const category = categoryById(concept.category);
+    const button = document.createElement("button");
+    button.className = `root-item ${focusId === concept.id ? "active" : ""}`;
+    button.style.setProperty("--category-color", category.color);
+    button.innerHTML = `
+      <span class="root-dot"></span>
+      <span>${escapeHtml(concept.label)}</span>
+    `;
+    button.addEventListener("click", () => focusOn(concept.id, { resetTrail: true }));
+    list.appendChild(button);
+  });
+}
+
+function renderFocus() {
+  renderFocusList();
+  const canvas = el("focusCanvas");
+  if (!focusId && state.concepts.length) focusId = state.concepts[0].id;
+  const concept = conceptById(focusId);
+  if (!concept) {
+    canvas.innerHTML = `
+      <div class="empty-state focus-empty">
+        <span data-icon="scan-search"></span>
+        <p>左侧选择一个概念作为焦点</p>
+      </div>
+    `;
+    return;
+  }
+
+  const category = categoryById(concept.category);
+  const groups = facetGroups(concept);
+  const papers = state.papers
+    .filter((paper) => paper.conceptIds.includes(concept.id))
+    .sort((a, b) => (a.year || "9999").localeCompare(b.year || "9999"));
+
+  const crumbs = focusTrail
+    .map(conceptById)
+    .filter(Boolean)
+    .map(
+      (item, index) =>
+        `<button class="crumb" data-index="${index}">${escapeHtml(item.label)}</button><span class="crumb-sep">/</span>`
+    )
+    .join("");
+
+  canvas.innerHTML = `
+    <nav class="focus-breadcrumbs" aria-label="追溯路径">
+      ${crumbs}
+      <span class="crumb-current">${escapeHtml(concept.label)}</span>
+    </nav>
+    <article class="focus-card" style="--category-color:${category.color}">
+      <div class="focus-card-heading">
+        <div>
+          <span class="focus-category" style="color:${category.color}">${category.label}</span>
+          <h3>${escapeHtml(concept.label)}</h3>
+        </div>
+        <button class="text-button" id="focusEditButton">
+          <span data-icon="wrench"></span>
+          编辑
+        </button>
+      </div>
+      <p class="focus-definition">${escapeHtml(concept.definition || "尚未填写定义")}</p>
+    </article>
+    <div class="facet-grid">
+      ${groups
+        .map(
+          (group) => `
+            <section class="facet-group">
+              <h4>
+                <span>${escapeHtml(group.label)}</span>
+                <span class="facet-count">${group.nodes.length}</span>
+              </h4>
+              <div class="facet-chips">
+                ${group.nodes
+                  .map((node) => {
+                    const nodeCategory = categoryById(node.category);
+                    const count = paperCountForConcept(node.id);
+                    return `
+                      <button class="facet-chip" data-id="${node.id}" style="--category-color:${nodeCategory.color}">
+                        ${escapeHtml(node.label)}
+                        ${count ? `<span class="chip-count">${count} 篇</span>` : ""}
+                      </button>
+                    `;
+                  })
+                  .join("")}
+              </div>
+            </section>
+          `
+        )
+        .join("")}
+      ${groups.length ? "" : `<p class="empty-column">这个概念还没有任何关系，点击“编辑”开始连接。</p>`}
+    </div>
+    <section class="focus-papers">
+      <h4>挂载文献 · 按年份 <span class="facet-count">${papers.length}</span></h4>
+      ${
+        papers.length
+          ? papers
+              .map(
+                (paper) => `
+                  <button class="focus-paper-item" data-paper="${paper.id}">
+                    <span class="focus-paper-year">${escapeHtml(paper.year || "—")}</span>
+                    <span class="focus-paper-body">
+                      <span class="focus-paper-title">${escapeHtml(paper.title)}</span>
+                      <span class="focus-paper-meta">${escapeHtml(paper.authors || "")}</span>
+                    </span>
+                  </button>
+                `
+              )
+              .join("")
+          : `<p class="empty-column">还没有文献挂载到这个概念。</p>`
+      }
+    </section>
+  `;
+
+  canvas.querySelectorAll(".crumb").forEach((button) => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.index);
+      const id = focusTrail[index];
+      focusTrail = focusTrail.slice(0, index);
+      focusId = id;
+      renderFocus();
+      initializeIcons();
+    });
+  });
+  canvas.querySelectorAll(".facet-chip").forEach((button) => {
+    button.addEventListener("click", () => focusOn(button.dataset.id));
+  });
+  canvas.querySelectorAll(".focus-paper-item").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedPaperId = button.dataset.paper;
+      switchView("papers");
+      renderPapers();
+    });
+  });
+  canvas.querySelector("#focusEditButton")?.addEventListener("click", () => openInspector(concept.id));
+}
+
 function renderPapers() {
   const list = el("paperList");
   const papers = state.papers.filter((paper) => {
@@ -691,12 +945,39 @@ function renderPaperDetail(paper) {
     return;
   }
 
+  const relatedRows = (paper.relatedPapers || [])
+    .map((link) => {
+      const target = state.papers.find((item) => item.id === link.paperId);
+      const label = target ? target.title : link.ref;
+      return `
+        <li>
+          <span class="paper-link-type">${paperLinkLabels[link.type] || link.type}</span>
+          ${
+            target
+              ? `<button class="paper-link" data-paper="${target.id}">${escapeHtml(label)}</button>`
+              : `<span class="paper-link-plain">${escapeHtml(label)}（库外）</span>`
+          }
+        </li>
+      `;
+    })
+    .join("");
+
   detail.innerHTML = `
     <div class="paper-detail-header">
       <h3>${escapeHtml(paper.title)}</h3>
       <p>${escapeHtml([paper.authors, paper.year, paper.identifier].filter(Boolean).join(" · "))}</p>
     </div>
     <div class="paper-summary">${escapeHtml(paper.summary || "尚未填写一句话定位。")}</div>
+    ${
+      relatedRows
+        ? `
+          <div class="paper-links">
+            <h4>与其他文献的关系</h4>
+            <ul>${relatedRows}</ul>
+          </div>
+        `
+        : ""
+    }
     <div class="placement-heading">
       <h4>选择概念位置</h4>
       <button class="text-button" id="quickNewConcept">
@@ -746,6 +1027,12 @@ function renderPaperDetail(paper) {
     });
   });
   el("quickNewConcept").addEventListener("click", () => openInspector());
+  detail.querySelectorAll(".paper-link").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedPaperId = button.dataset.paper;
+      renderPapers();
+    });
+  });
   initializeIcons();
 }
 
@@ -792,6 +1079,12 @@ function switchView(view) {
     section.classList.toggle("active", section.id === `${view}View`);
   });
   if (view === "tree") setTimeout(renderTree, 0);
+  if (view === "focus") {
+    setTimeout(() => {
+      renderFocus();
+      initializeIcons();
+    }, 0);
+  }
 }
 
 function exportData() {
@@ -824,6 +1117,16 @@ function escapeHtml(value) {
 
 function truncate(value, max) {
   return value.length > max ? `${value.slice(0, max - 1)}…` : value;
+}
+
+function renderRelationFilter() {
+  el("relationFilter").innerHTML = [
+    `<button class="active" data-relation="all">全部</button>`,
+    `<button data-relation="is_a">层级</button>`,
+    ...relationTypes.map(
+      (item) => `<button data-relation="${item.id}">${item.short}</button>`
+    ),
+  ].join("");
 }
 
 function bindEvents() {
@@ -872,6 +1175,7 @@ function bindEvents() {
 }
 
 renderCategoryOptions();
+renderRelationFilter();
 bindEvents();
 renderAll();
 loadFromObsidian();
