@@ -13,7 +13,8 @@ flowchart LR
   concept-c76db8188abb74a8["Li-Na选择性"]
   concept-a52bccadc267e252["LiOH转化"]
   concept-6978f4ac65e570b3["MOF膜"]
-  concept-72f4136a2fc93ccb["仿生膜"]
+  concept-1d7390547df6c370["人工离子通道"]
+  concept-5e65532181210f70["仿生通道膜"]
   concept-c0378442fdf59c9a["冠醚膜"]
   concept-248b26ed54d501b7["卤水浓缩"]
   concept-1fbced5107f74ed2["卤水管理"]
@@ -87,8 +88,9 @@ flowchart LR
   concept-6978f4ac65e570b3 -->|"is_a"| concept-ce8ce09c94edcb22
   concept-6978f4ac65e570b3 -->|"acts_via"| concept-3043efed00891338
   concept-6978f4ac65e570b3 -->|"used_for"| concept-808d0e25cc545d79
-  concept-72f4136a2fc93ccb -->|"is_a"| concept-ce8ce09c94edcb22
-  concept-72f4136a2fc93ccb -->|"used_for"| concept-808d0e25cc545d79
+  concept-5e65532181210f70 -->|"is_a"| concept-ce8ce09c94edcb22
+  concept-5e65532181210f70 -->|"used_for"| concept-808d0e25cc545d79
+  concept-5e65532181210f70 -->|"acts_via"| concept-1d7390547df6c370
   concept-c0378442fdf59c9a -->|"is_a"| concept-ce8ce09c94edcb22
   concept-c0378442fdf59c9a -->|"acts_via"| concept-3043efed00891338
   concept-c0378442fdf59c9a -->|"used_for"| concept-808d0e25cc545d79
@@ -106,6 +108,7 @@ flowchart LR
   concept-0bbd457ed95a805a -->|"used_for"| concept-90e77fad7450b240
   concept-a826aa39bdbb96fc -->|"is_a"| concept-ce8ce09c94edcb22
   concept-a826aa39bdbb96fc -->|"related_to"| concept-0bbd457ed95a805a
+  concept-a826aa39bdbb96fc -->|"acts_via"| concept-db9c18b47bc3436f
   concept-b9c5b791fbf2339f -->|"is_a"| concept-428349244c0075ac
   concept-70034dddeca1348a -->|"is_a"| concept-05e5db2d8d0a2f4a
   concept-cb26f42a10031939 -->|"is_a"| concept-0271e544f234d67b
@@ -128,7 +131,7 @@ flowchart LR
   concept-814b093fbc71b9b5 -->|"is_a"| concept-428349244c0075ac
   concept-a8413435c303619b -->|"is_a"| concept-05e5db2d8d0a2f4a
   concept-a8413435c303619b -->|"related_to"| concept-814b093fbc71b9b5
-  concept-a8413435c303619b -->|"related_to"| concept-64eccf3d882b1d8f
+  concept-a8413435c303619b -->|"prepared_by"| concept-64eccf3d882b1d8f
   concept-5612d81de4250bac -->|"is_a"| concept-11cef29796ad1f6b
   concept-5612d81de4250bac -->|"used_for"| concept-05414060b73bbbcf
   concept-5612d81de4250bac -->|"acts_via"| concept-38756aafa250f405
@@ -138,6 +141,7 @@ flowchart LR
   concept-eed8d59c77a6659a -->|"used_for"| concept-90e77fad7450b240
   concept-d458203dc7ccee08 -->|"is_a"| concept-ce8ce09c94edcb22
   concept-d458203dc7ccee08 -->|"component_of"| concept-5612d81de4250bac
+  concept-d458203dc7ccee08 -->|"acts_via"| concept-38756aafa250f405
   concept-f4bb832fba83254f -->|"is_a"| concept-ce8ce09c94edcb22
   concept-f4bb832fba83254f -->|"used_for"| concept-05414060b73bbbcf
   concept-f4bb832fba83254f -->|"component_of"| concept-5612d81de4250bac
@@ -151,7 +155,9 @@ flowchart LR
   concept-00aff774158ff375 -->|"used_for"| concept-05414060b73bbbcf
   concept-00aff774158ff375 -->|"acts_via"| concept-38756aafa250f405
   concept-17d7f106be82ab77 -->|"related_to"| concept-d3e6a97f01c0735c
+  concept-17d7f106be82ab77 -->|"used_for"| concept-90e77fad7450b240
   concept-ce8ce09c94edcb22 -->|"is_a"| concept-bcea1c87f145b817
+  concept-ce8ce09c94edcb22 -->|"has_property"| concept-7e0e92672c36e3f3
   concept-13c1f3fb2880c61f -->|"is_a"| concept-11cef29796ad1f6b
   concept-13c1f3fb2880c61f -->|"used_for"| concept-808d0e25cc545d79
   concept-4f4fab85b5f5bdb5 -->|"is_a"| concept-b3c8b5ff4f3891b7
@@ -167,6 +173,8 @@ flowchart LR
   concept-5a9cd02115deb4eb -->|"component_of"| concept-098b870319a7a3d6
   concept-28f9a6724212f466 -->|"is_a"| concept-b9c5b791fbf2339f
   concept-90e77fad7450b240 -->|"related_to"| concept-428349244c0075ac
+  concept-90e77fad7450b240 -->|"has_property"| concept-92bdf341b2f67481
+  concept-90e77fad7450b240 -->|"has_property"| concept-2ef030f119f4d911
   concept-d3af0f76a0bee920 -->|"related_to"| concept-d5209dac1c256350
   concept-026bcf0ed817f4ca -->|"is_a"| concept-b9c5b791fbf2339f
   concept-ba430b1c39f61cfb -->|"improves"| concept-85a95296490a1ae7
@@ -174,8 +182,11 @@ flowchart LR
   concept-2c1c0088a07e42de -->|"is_a"| concept-f39bf880bf67358d
   concept-2c1c0088a07e42de -->|"used_for"| concept-1fbced5107f74ed2
   paper-37974a325a0b07d7 -.->|"tagged"| concept-f4bb832fba83254f
+  paper-37974a325a0b07d7 -.->|"tagged"| concept-d458203dc7ccee08
   paper-37974a325a0b07d7 -.->|"tagged"| concept-05414060b73bbbcf
   paper-37974a325a0b07d7 -.->|"tagged"| concept-54c9d69e4ab86043
   paper-37974a325a0b07d7 -.->|"tagged"| concept-ba430b1c39f61cfb
+  paper-37974a325a0b07d7 -.->|"tagged"| concept-38756aafa250f405
+  paper-37974a325a0b07d7 -.->|"tagged"| concept-5612d81de4250bac
   paper-37974a325a0b07d7 -.->|"tagged"| concept-85a95296490a1ae7
 ```

@@ -20,6 +20,7 @@ review_role:
   - classification_map
   - mechanism_map
   - literature_finder
+concepts: [离子选择膜, Li-Mg选择性]
 claim_records:
   - claim_three_stage_lithium_ion_selectivity_001
 openalex:

@@ -906,6 +906,30 @@ select:focus-visible {
   color: var(--muted);
 }
 
+.review-badge {
+  display: inline-block;
+  margin-right: 7px;
+  padding: 2px 7px;
+  background: var(--violet-soft);
+  color: var(--violet);
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 600;
+  vertical-align: 2px;
+}
+
+.focus-source {
+  max-width: 900px;
+  margin-top: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+}
+
+.focus-source .paper-link {
+  font-size: 13px;
+}
+
 .paper-filter {
   margin: 12px;
 }

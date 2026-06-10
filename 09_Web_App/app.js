@@ -977,6 +977,21 @@ function renderFocus() {
           : `<p class="empty-column">这个概念还没有任何关系，点击“编辑”开始连接。</p>`
       }
     </div>
+    ${
+      concept.sourceReviewId
+        ? (() => {
+            const review = state.papers.find((item) => item.id === concept.sourceReviewId);
+            return review
+              ? `
+                <section class="focus-source">
+                  <span class="review-badge">来源综述</span>
+                  <button class="paper-link" data-paper="${review.id}">${escapeHtml(review.title)}</button>
+                </section>
+              `
+              : "";
+          })()
+        : ""
+    }
     <section class="focus-papers">
       <h4>挂载文献 · 按年份 <span class="facet-count">${papers.length}</span></h4>
       ${
@@ -1011,7 +1026,7 @@ function renderFocus() {
       initializeIcons();
     });
   });
-  canvas.querySelectorAll(".focus-paper-item").forEach((button) => {
+  canvas.querySelectorAll(".focus-paper-item, .focus-source .paper-link").forEach((button) => {
     button.addEventListener("click", () => {
       selectedPaperId = button.dataset.paper;
       switchView("papers");
@@ -1036,7 +1051,7 @@ function renderPapers() {
     const item = document.createElement("article");
     item.className = `paper-item ${selectedPaperId === paper.id ? "active" : ""}`;
     item.innerHTML = `
-      <h3>${escapeHtml(paper.title)}</h3>
+      <h3>${paper.kind === "review" ? `<span class="review-badge">综述</span>` : ""}${escapeHtml(paper.title)}</h3>
       <div class="paper-item-meta">
         <span>${escapeHtml([paper.authors, paper.year].filter(Boolean).join(" · ") || "信息待补充")}</span>
         <span class="placement-status ${paper.conceptIds.length ? "placed" : ""}">
@@ -1087,7 +1102,7 @@ function renderPaperDetail(paper) {
 
   detail.innerHTML = `
     <div class="paper-detail-header">
-      <h3>${escapeHtml(paper.title)}</h3>
+      <h3>${paper.kind === "review" ? `<span class="review-badge">综述</span>` : ""}${escapeHtml(paper.title)}</h3>
       <p>${escapeHtml([paper.authors, paper.year, paper.identifier].filter(Boolean).join(" · "))}</p>
     </div>
     <div class="paper-summary">${escapeHtml(paper.summary || "尚未填写一句话定位。")}</div>

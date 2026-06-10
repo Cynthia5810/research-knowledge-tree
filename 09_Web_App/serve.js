@@ -7,6 +7,7 @@ const webRoot = __dirname;
 const vaultRoot = path.resolve(__dirname, "..");
 const conceptDir = path.join(vaultRoot, "04_Concept_Nodes");
 const paperDir = path.join(vaultRoot, "02_Paper_Position_Cards");
+const reviewDir = path.join(vaultRoot, "01_Review_Maps");
 const port = Number(process.env.PORT || 4180);
 const types = {
   ".html": "text/html; charset=utf-8",
@@ -150,6 +151,7 @@ function readState() {
         definition: firstContentLine(section(text, "定义")),
         parentLabel: wikilinkTarget(meta.parent) || parsed.parentLabel,
         rawRelations: parsed.relations,
+        sourceReview: wikilinkTarget(meta.source_review),
       };
     })
     .filter(Boolean);
@@ -166,28 +168,36 @@ function readState() {
       .filter((relation) => relation.target),
   }));
 
-  const rawPapers = markdownFiles(paperDir)
-    .map((name) => {
-      const text = fs.readFileSync(path.join(paperDir, name), "utf8");
-      const meta = parseFrontmatter(text);
-      if (meta.type !== "paper_position_card") return null;
-      const conceptLabels = Array.isArray(meta.concepts) ? meta.concepts : [];
-      return {
-        id: path.basename(name, ".md"),
-        fileName: name,
-        title: meta.title || path.basename(name, ".md"),
-        authors: meta.authors || "",
-        year: String(meta.year || ""),
-        identifier: meta.doi || meta.zotero_key || "",
-        doi: meta.doi || "",
-        zoteroKey: meta.zotero_key || "",
-        citekey: meta.citekey || "",
-        summary: firstContentLine(section(text, "13. 一句话定位")),
-        conceptIds: conceptLabels.map((label) => idByLabel.get(label)).filter(Boolean),
-        rawLinks: parseRelatedPapers(text),
-      };
-    })
-    .filter(Boolean);
+  const readPaperFile = (dir, name, expectedType, kind, summaryHeading) => {
+    const text = fs.readFileSync(path.join(dir, name), "utf8");
+    const meta = parseFrontmatter(text);
+    if (meta.type !== expectedType) return null;
+    const conceptLabels = Array.isArray(meta.concepts) ? meta.concepts : [];
+    return {
+      id: path.basename(name, ".md"),
+      fileName: name,
+      kind,
+      title: meta.title || path.basename(name, ".md"),
+      authors: meta.authors || "",
+      year: String(meta.year || ""),
+      identifier: meta.doi || meta.zotero_key || "",
+      doi: meta.doi || "",
+      zoteroKey: meta.zotero_key || "",
+      citekey: meta.citekey || "",
+      summary: firstContentLine(section(text, summaryHeading)),
+      conceptIds: conceptLabels.map((label) => idByLabel.get(label)).filter(Boolean),
+      rawLinks: parseRelatedPapers(text),
+    };
+  };
+
+  const rawPapers = [
+    ...markdownFiles(paperDir).map((name) =>
+      readPaperFile(paperDir, name, "paper_position_card", "paper", "13. 一句话定位")
+    ),
+    ...markdownFiles(reviewDir).map((name) =>
+      readPaperFile(reviewDir, name, "review_map", "review", "8. 一句话定位")
+    ),
+  ].filter(Boolean);
 
   const paperIdByRef = new Map();
   for (const paper of rawPapers) {
@@ -204,15 +214,26 @@ function readState() {
     })),
   }));
 
-  const signature = [...markdownFiles(conceptDir), ...markdownFiles(paperDir)]
-    .map((name) => {
-      const dir = fs.existsSync(path.join(conceptDir, name)) ? conceptDir : paperDir;
-      const stat = fs.statSync(path.join(dir, name));
-      return `${name}:${stat.size}:${stat.mtimeMs}`;
-    })
+  const paperIds = new Set(papers.map((paper) => paper.id));
+  const conceptsWithSource = concepts.map(({ sourceReview, ...concept }) => ({
+    ...concept,
+    sourceReviewId: sourceReview && paperIds.has(sourceReview) ? sourceReview : "",
+  }));
+
+  const signature = [
+    [conceptDir, markdownFiles(conceptDir)],
+    [paperDir, markdownFiles(paperDir)],
+    [reviewDir, markdownFiles(reviewDir)],
+  ]
+    .flatMap(([dir, names]) =>
+      names.map((name) => {
+        const stat = fs.statSync(path.join(dir, name));
+        return `${name}:${stat.size}:${stat.mtimeMs}`;
+      })
+    )
     .join("|");
   const version = crypto.createHash("sha1").update(signature).digest("hex").slice(0, 12);
-  return { concepts, papers, version, source: "obsidian" };
+  return { concepts: conceptsWithSource, papers, version, source: "obsidian" };
 }
 
 function yamlValue(value) {
@@ -322,7 +343,9 @@ function writeConcept(payload) {
 }
 
 function updatePaperConcepts(id, conceptIds) {
-  const filePath = path.join(paperDir, `${path.basename(id)}.md`);
+  const base = `${path.basename(id)}.md`;
+  let filePath = path.join(paperDir, base);
+  if (!fs.existsSync(filePath)) filePath = path.join(reviewDir, base);
   if (!fs.existsSync(filePath)) throw new Error("Paper not found");
   const state = readState();
   const labelById = new Map(state.concepts.map((item) => [item.id, item.label]));
