@@ -15,3 +15,5 @@ status: active
 从含镁体系中实现锂离子的选择性分离与富集。
 
 ## 关系
+
+- component_of: [[锂回收]]
