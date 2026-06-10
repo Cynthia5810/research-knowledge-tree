@@ -8,7 +8,8 @@
     "generate:tree": "node 08_Scripts/generate_tree.js",
     "generate:mvp": "node 08_Scripts/generate_mvp_graph.js",
     "web": "node 09_Web_App/serve.js",
-    "verify": "node --check 09_Web_App/serve.js && node --check 09_Web_App/app.js && node 08_Scripts/generate_tree.js && node 08_Scripts/generate_mvp_graph.js"
+    "lint:ontology": "node 08_Scripts/lint_ontology.js",
+    "verify": "node --check 09_Web_App/serve.js && node --check 09_Web_App/app.js && node 08_Scripts/lint_ontology.js && node 08_Scripts/generate_tree.js && node 08_Scripts/generate_mvp_graph.js"
   },
   "engines": {
     "node": ">=18"
