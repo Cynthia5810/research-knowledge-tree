@@ -1275,10 +1275,14 @@ function bindEvents() {
     });
   });
 
-  el("searchInput").addEventListener("input", (event) => {
-    searchTerm = event.target.value.trim().toLowerCase();
+  const syncSearch = (value, source) => {
+    searchTerm = value.trim().toLowerCase();
+    if (source !== "top") el("searchInput").value = value;
+    if (source !== "board") el("boardSearchInput").value = value;
     renderAll();
-  });
+  };
+  el("searchInput").addEventListener("input", (event) => syncSearch(event.target.value, "top"));
+  el("boardSearchInput").addEventListener("input", (event) => syncSearch(event.target.value, "board"));
   el("addConceptButton").addEventListener("click", () => openInspector());
   el("closeInspector").addEventListener("click", closeInspector);
   el("modalBackdrop").addEventListener("click", closeInspector);

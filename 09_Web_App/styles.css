@@ -273,6 +273,17 @@ select:focus-visible {
   font-size: 13px;
 }
 
+.toolbar-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.board-search {
+  width: min(34vw, 260px);
+  height: 38px;
+}
+
 .primary-button,
 .secondary-button,
 .danger-button {
