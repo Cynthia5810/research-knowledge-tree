@@ -756,6 +756,152 @@ function facetGroups(concept) {
   return groups;
 }
 
+function svgTextWidth(value) {
+  return [...String(value)].reduce(
+    (width, ch) => width + (ch.charCodeAt(0) > 255 ? 13 : 7.2),
+    0
+  );
+}
+
+function renderFocusTree(root, groups) {
+  const svg = el("focusTreeSvg");
+  if (!svg) return;
+  const ns = "http://www.w3.org/2000/svg";
+  svg.innerHTML = "";
+
+  const rowH = 46;
+  const boxH = 34;
+  const laneGap = 14;
+  const pad = 18;
+  const rootCategory = categoryById(root.category);
+
+  const rootW = svgTextWidth(root.label) + 30;
+  const rootX = 14;
+  const facetX = rootX + rootW + 64;
+  const maxFacetW =
+    Math.max(...groups.map((group) => svgTextWidth(`${group.label} ${group.nodes.length}`))) + 24;
+  const leafX = facetX + maxFacetW + 64;
+
+  let cursor = pad;
+  const lanes = groups.map((group) => {
+    const lane = { group, top: cursor, height: group.nodes.length * rowH };
+    cursor += lane.height + laneGap;
+    return lane;
+  });
+  const totalH = Math.max(cursor - laneGap + pad, 170);
+
+  const leafWidths = groups.flatMap((group) =>
+    group.nodes.map((node) => {
+      const count = paperCountForConcept(node.id);
+      return svgTextWidth(node.label + (count ? ` ${count}篇` : "")) + 32;
+    })
+  );
+  const width = leafX + Math.max(...leafWidths, 90) + pad;
+  svg.setAttribute("viewBox", `0 0 ${width} ${totalH}`);
+  svg.style.height = `${totalH}px`;
+  svg.style.minWidth = `${width}px`;
+
+  const link = (x1, y1, x2, y2) => {
+    const path = document.createElementNS(ns, "path");
+    path.setAttribute("class", "focus-link");
+    const mid = (x1 + x2) / 2;
+    path.setAttribute("d", `M ${x1} ${y1} C ${mid} ${y1}, ${mid} ${y2}, ${x2} ${y2}`);
+    svg.appendChild(path);
+  };
+
+  const rootY = totalH / 2;
+
+  lanes.forEach((lane) => {
+    const facetY = lane.top + lane.height / 2;
+    link(rootX + rootW, rootY, facetX, facetY);
+    lane.group.nodes.forEach((node, index) => {
+      const leafY = lane.top + index * rowH + rowH / 2;
+      link(facetX + maxFacetW, facetY, leafX, leafY);
+    });
+  });
+
+  lanes.forEach((lane) => {
+    const facetY = lane.top + lane.height / 2;
+    const group = document.createElementNS(ns, "g");
+    group.setAttribute("class", "focus-facet");
+    const rect = document.createElementNS(ns, "rect");
+    rect.setAttribute("x", facetX);
+    rect.setAttribute("y", facetY - 13);
+    rect.setAttribute("width", maxFacetW);
+    rect.setAttribute("height", 26);
+    rect.setAttribute("rx", 13);
+    const text = document.createElementNS(ns, "text");
+    text.setAttribute("x", facetX + maxFacetW / 2);
+    text.setAttribute("y", facetY + 4);
+    text.setAttribute("text-anchor", "middle");
+    text.textContent = `${lane.group.label} ${lane.group.nodes.length}`;
+    group.append(rect, text);
+    svg.appendChild(group);
+  });
+
+  lanes.forEach((lane) => {
+    lane.group.nodes.forEach((node, index) => {
+      const leafY = lane.top + index * rowH + rowH / 2;
+      const category = categoryById(node.category);
+      const count = paperCountForConcept(node.id);
+      const countText = count ? `${count}篇` : "";
+      const w = svgTextWidth(node.label + (countText ? ` ${countText}` : "")) + 32;
+      const group = document.createElementNS(ns, "g");
+      group.setAttribute("class", "focus-leaf");
+      group.setAttribute("tabindex", "0");
+      group.setAttribute("role", "button");
+      group.setAttribute("aria-label", `聚焦 ${node.label}`);
+      const rect = document.createElementNS(ns, "rect");
+      rect.setAttribute("x", leafX);
+      rect.setAttribute("y", leafY - boxH / 2);
+      rect.setAttribute("width", w);
+      rect.setAttribute("height", boxH);
+      rect.setAttribute("rx", 5);
+      rect.setAttribute("stroke", category.color);
+      const text = document.createElementNS(ns, "text");
+      text.setAttribute("x", leafX + 14);
+      text.setAttribute("y", leafY + 4.5);
+      text.textContent = node.label;
+      group.append(rect, text);
+      if (countText) {
+        const countNode = document.createElementNS(ns, "text");
+        countNode.setAttribute("class", "focus-leaf-count");
+        countNode.setAttribute("x", leafX + 14 + svgTextWidth(node.label) + 8);
+        countNode.setAttribute("y", leafY + 4.5);
+        countNode.textContent = countText;
+        group.appendChild(countNode);
+      }
+      const open = () => focusOn(node.id);
+      group.addEventListener("click", open);
+      group.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") open();
+      });
+      svg.appendChild(group);
+    });
+  });
+
+  const rootGroup = document.createElementNS(ns, "g");
+  rootGroup.setAttribute("class", "focus-root");
+  rootGroup.setAttribute("tabindex", "0");
+  rootGroup.setAttribute("role", "button");
+  rootGroup.setAttribute("aria-label", `编辑 ${root.label}`);
+  const rootRect = document.createElementNS(ns, "rect");
+  rootRect.setAttribute("x", rootX);
+  rootRect.setAttribute("y", rootY - 19);
+  rootRect.setAttribute("width", rootW);
+  rootRect.setAttribute("height", 38);
+  rootRect.setAttribute("rx", 6);
+  rootRect.setAttribute("fill", rootCategory.color);
+  const rootText = document.createElementNS(ns, "text");
+  rootText.setAttribute("x", rootX + rootW / 2);
+  rootText.setAttribute("y", rootY + 5);
+  rootText.setAttribute("text-anchor", "middle");
+  rootText.textContent = root.label;
+  rootGroup.append(rootRect, rootText);
+  rootGroup.addEventListener("click", () => openInspector(root.id));
+  svg.appendChild(rootGroup);
+}
+
 function renderFocusList() {
   const list = el("focusList");
   list.innerHTML = "";
@@ -824,34 +970,12 @@ function renderFocus() {
       </div>
       <p class="focus-definition">${escapeHtml(concept.definition || "尚未填写定义")}</p>
     </article>
-    <div class="facet-grid">
-      ${groups
-        .map(
-          (group) => `
-            <section class="facet-group">
-              <h4>
-                <span>${escapeHtml(group.label)}</span>
-                <span class="facet-count">${group.nodes.length}</span>
-              </h4>
-              <div class="facet-chips">
-                ${group.nodes
-                  .map((node) => {
-                    const nodeCategory = categoryById(node.category);
-                    const count = paperCountForConcept(node.id);
-                    return `
-                      <button class="facet-chip" data-id="${node.id}" style="--category-color:${nodeCategory.color}">
-                        ${escapeHtml(node.label)}
-                        ${count ? `<span class="chip-count">${count} 篇</span>` : ""}
-                      </button>
-                    `;
-                  })
-                  .join("")}
-              </div>
-            </section>
-          `
-        )
-        .join("")}
-      ${groups.length ? "" : `<p class="empty-column">这个概念还没有任何关系，点击“编辑”开始连接。</p>`}
+    <div class="focus-tree-wrap">
+      ${
+        groups.length
+          ? `<svg id="focusTreeSvg" aria-label="焦点树状图"></svg>`
+          : `<p class="empty-column">这个概念还没有任何关系，点击“编辑”开始连接。</p>`
+      }
     </div>
     <section class="focus-papers">
       <h4>挂载文献 · 按年份 <span class="facet-count">${papers.length}</span></h4>
@@ -875,6 +999,8 @@ function renderFocus() {
     </section>
   `;
 
+  renderFocusTree(concept, groups);
+
   canvas.querySelectorAll(".crumb").forEach((button) => {
     button.addEventListener("click", () => {
       const index = Number(button.dataset.index);
@@ -884,9 +1010,6 @@ function renderFocus() {
       renderFocus();
       initializeIcons();
     });
-  });
-  canvas.querySelectorAll(".facet-chip").forEach((button) => {
-    button.addEventListener("click", () => focusOn(button.dataset.id));
   });
   canvas.querySelectorAll(".focus-paper-item").forEach((button) => {
     button.addEventListener("click", () => {
