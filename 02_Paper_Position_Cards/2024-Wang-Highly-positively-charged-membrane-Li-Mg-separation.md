@@ -17,7 +17,7 @@ paper_role:
 reading_status: first_pass
 analysis_depth: deep_positioning
 
-concepts: [离子选择膜, 离子交换膜, Li-Mg分离, 表面正电化, 静电排斥, Donnan排斥, 电渗析, Li-Mg选择性]
+concepts: [离子选择膜, 离子交换膜, PEI类涂层改性, 运行稳定性, Li-Mg分离, 表面正电化, 静电排斥, Donnan排斥, 电渗析, Li-Mg选择性]
 
 tree_position:
   domain: 膜
