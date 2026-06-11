@@ -1,1628 +1,191 @@
 {
-  "nodes": [
-    {
-      "id": "concept-dbf1d2b6539bef2d",
-      "type": "file",
-      "file": "04_Concept_Nodes/2D材料膜.md",
-      "x": 0,
-      "y": 0,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-c2f3bc9ffcee427d",
-      "type": "file",
-      "file": "04_Concept_Nodes/COF膜.md",
-      "x": 360,
-      "y": 0,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-38756aafa250f405",
-      "type": "file",
-      "file": "04_Concept_Nodes/Donnan排斥.md",
-      "x": 720,
-      "y": 0,
-      "width": 300,
-      "height": 180,
-      "color": "4"
-    },
-    {
-      "id": "concept-05414060b73bbbcf",
-      "type": "file",
-      "file": "04_Concept_Nodes/Li-Mg分离.md",
-      "x": 0,
-      "y": 220,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-85a95296490a1ae7",
-      "type": "file",
-      "file": "04_Concept_Nodes/Li-Mg选择性.md",
-      "x": 360,
-      "y": 220,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-808d0e25cc545d79",
-      "type": "file",
-      "file": "04_Concept_Nodes/Li-Na分离.md",
-      "x": 720,
-      "y": 220,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-c76db8188abb74a8",
-      "type": "file",
-      "file": "04_Concept_Nodes/Li-Na选择性.md",
-      "x": 0,
-      "y": 440,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-a52bccadc267e252",
-      "type": "file",
-      "file": "04_Concept_Nodes/LiOH转化.md",
-      "x": 360,
-      "y": 440,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-6978f4ac65e570b3",
-      "type": "file",
-      "file": "04_Concept_Nodes/MOF膜.md",
-      "x": 720,
-      "y": 440,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-1d7390547df6c370",
-      "type": "file",
-      "file": "04_Concept_Nodes/人工离子通道.md",
-      "x": 0,
-      "y": 660,
-      "width": 300,
-      "height": 180,
-      "color": "4"
-    },
-    {
-      "id": "concept-5e65532181210f70",
-      "type": "file",
-      "file": "04_Concept_Nodes/仿生通道膜.md",
-      "x": 360,
-      "y": 660,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-c0378442fdf59c9a",
-      "type": "file",
-      "file": "04_Concept_Nodes/冠醚膜.md",
-      "x": 720,
-      "y": 660,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-248b26ed54d501b7",
-      "type": "file",
-      "file": "04_Concept_Nodes/卤水浓缩.md",
-      "x": 0,
-      "y": 880,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-1fbced5107f74ed2",
-      "type": "file",
-      "file": "04_Concept_Nodes/卤水管理.md",
-      "x": 360,
-      "y": 880,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-0271e544f234d67b",
-      "type": "file",
-      "file": "04_Concept_Nodes/压力驱动膜工艺.md",
-      "x": 720,
-      "y": 880,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-1963a803315475d3",
-      "type": "file",
-      "file": "04_Concept_Nodes/双极膜.md",
-      "x": 0,
-      "y": 1100,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-9ed0f3dc7adbc040",
-      "type": "file",
-      "file": "04_Concept_Nodes/双极膜电渗析.md",
-      "x": 360,
-      "y": 1100,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-f39bf880bf67358d",
-      "type": "file",
-      "file": "04_Concept_Nodes/反渗透.md",
-      "x": 720,
-      "y": 1100,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-0bbd457ed95a805a",
-      "type": "file",
-      "file": "04_Concept_Nodes/吸附法.md",
-      "x": 0,
-      "y": 1320,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-a826aa39bdbb96fc",
-      "type": "file",
-      "file": "04_Concept_Nodes/吸附膜.md",
-      "x": 360,
-      "y": 1320,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-b9c5b791fbf2339f",
-      "type": "file",
-      "file": "04_Concept_Nodes/固相锂矿.md",
-      "x": 720,
-      "y": 1320,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-70034dddeca1348a",
-      "type": "file",
-      "file": "04_Concept_Nodes/地热卤水.md",
-      "x": 0,
-      "y": 1540,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-80cbbd2a0e91593d",
-      "type": "file",
-      "file": "04_Concept_Nodes/尺寸筛分.md",
-      "x": 360,
-      "y": 1540,
-      "width": 300,
-      "height": 180,
-      "color": "4"
-    },
-    {
-      "id": "concept-db9c18b47bc3436f",
-      "type": "file",
-      "file": "04_Concept_Nodes/嵌入-脱嵌.md",
-      "x": 720,
-      "y": 1540,
-      "width": 300,
-      "height": 180,
-      "color": "4"
-    },
-    {
-      "id": "concept-cb26f42a10031939",
-      "type": "file",
-      "file": "04_Concept_Nodes/微滤.md",
-      "x": 0,
-      "y": 1760,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-85dd84efa223fd0c",
-      "type": "file",
-      "file": "04_Concept_Nodes/拆解预处理.md",
-      "x": 360,
-      "y": 1760,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-92bdf341b2f67481",
-      "type": "file",
-      "file": "04_Concept_Nodes/比能耗.md",
-      "x": 720,
-      "y": 1760,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-7e0e92672c36e3f3",
-      "type": "file",
-      "file": "04_Concept_Nodes/水渗透性.md",
-      "x": 0,
-      "y": 1980,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-05e5db2d8d0a2f4a",
-      "type": "file",
-      "file": "04_Concept_Nodes/水相锂源.md",
-      "x": 360,
-      "y": 1980,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-2ef030f119f4d911",
-      "type": "file",
-      "file": "04_Concept_Nodes/水耗.md",
-      "x": 720,
-      "y": 1980,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-da32b4b022ec2bae",
-      "type": "file",
-      "file": "04_Concept_Nodes/油田采出水.md",
-      "x": 0,
-      "y": 2200,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-42c431bd7b2b3c4a",
-      "type": "file",
-      "file": "04_Concept_Nodes/海水.md",
-      "x": 360,
-      "y": 2200,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-64eccf3d882b1d8f",
-      "type": "file",
-      "file": "04_Concept_Nodes/湿法浸出.md",
-      "x": 720,
-      "y": 2200,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-a0e3b8af0fc68a47",
-      "type": "file",
-      "file": "04_Concept_Nodes/溶剂萃取法.md",
-      "x": 0,
-      "y": 2420,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-69740bc1c90c2b2d",
-      "type": "file",
-      "file": "04_Concept_Nodes/火法冶金.md",
-      "x": 360,
-      "y": 2420,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-b3c8b5ff4f3891b7",
-      "type": "file",
-      "file": "04_Concept_Nodes/热驱动膜工艺.md",
-      "x": 720,
-      "y": 2420,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-99b6119001df2349",
-      "type": "file",
-      "file": "04_Concept_Nodes/玻璃陶瓷膜.md",
-      "x": 0,
-      "y": 2640,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-385b370112e23252",
-      "type": "file",
-      "file": "04_Concept_Nodes/生物浸出.md",
-      "x": 360,
-      "y": 2640,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-098b870319a7a3d6",
-      "type": "file",
-      "file": "04_Concept_Nodes/电池回收.md",
-      "x": 720,
-      "y": 2640,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-814b093fbc71b9b5",
-      "type": "file",
-      "file": "04_Concept_Nodes/电池废料.md",
-      "x": 0,
-      "y": 2860,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-a8413435c303619b",
-      "type": "file",
-      "file": "04_Concept_Nodes/电池浸出液.md",
-      "x": 360,
-      "y": 2860,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-5612d81de4250bac",
-      "type": "file",
-      "file": "04_Concept_Nodes/电渗析.md",
-      "x": 720,
-      "y": 2860,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-11cef29796ad1f6b",
-      "type": "file",
-      "file": "04_Concept_Nodes/电驱动膜工艺.md",
-      "x": 0,
-      "y": 3080,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-54ca97b8bfa73530",
-      "type": "file",
-      "file": "04_Concept_Nodes/盐湖卤水.md",
-      "x": 360,
-      "y": 3080,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-d3e6a97f01c0735c",
-      "type": "file",
-      "file": "04_Concept_Nodes/直接锂提取DLE.md",
-      "x": 720,
-      "y": 3080,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-eed8d59c77a6659a",
-      "type": "file",
-      "file": "04_Concept_Nodes/离子交换法.md",
-      "x": 0,
-      "y": 3300,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-d458203dc7ccee08",
-      "type": "file",
-      "file": "04_Concept_Nodes/离子交换膜.md",
-      "x": 360,
-      "y": 3300,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-f4bb832fba83254f",
-      "type": "file",
-      "file": "04_Concept_Nodes/离子选择膜.md",
-      "x": 720,
-      "y": 3300,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-a9f4749797725557",
-      "type": "file",
-      "file": "04_Concept_Nodes/纳滤.md",
-      "x": 0,
-      "y": 3520,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-00aff774158ff375",
-      "type": "file",
-      "file": "04_Concept_Nodes/聚酰胺膜.md",
-      "x": 360,
-      "y": 3520,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-bcea1c87f145b817",
-      "type": "file",
-      "file": "04_Concept_Nodes/膜.md",
-      "x": 720,
-      "y": 3520,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-17d7f106be82ab77",
-      "type": "file",
-      "file": "04_Concept_Nodes/膜工艺.md",
-      "x": 0,
-      "y": 3740,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-ce8ce09c94edcb22",
-      "type": "file",
-      "file": "04_Concept_Nodes/膜材料.md",
-      "x": 360,
-      "y": 3740,
-      "width": 300,
-      "height": 180,
-      "color": "2"
-    },
-    {
-      "id": "concept-13c1f3fb2880c61f",
-      "type": "file",
-      "file": "04_Concept_Nodes/膜电容去离子.md",
-      "x": 720,
-      "y": 3740,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-4f4fab85b5f5bdb5",
-      "type": "file",
-      "file": "04_Concept_Nodes/膜蒸馏.md",
-      "x": 0,
-      "y": 3960,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-8ec32fc6e9729eef",
-      "type": "file",
-      "file": "04_Concept_Nodes/膜蒸馏结晶.md",
-      "x": 360,
-      "y": 3960,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-54c9d69e4ab86043",
-      "type": "file",
-      "file": "04_Concept_Nodes/表面正电化.md",
-      "x": 720,
-      "y": 3960,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-4aba571acc235b6f",
-      "type": "file",
-      "file": "04_Concept_Nodes/超滤.md",
-      "x": 0,
-      "y": 4180,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-d5209dac1c256350",
-      "type": "file",
-      "file": "04_Concept_Nodes/选择性.md",
-      "x": 360,
-      "y": 4180,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-eb95c9efd2d91741",
-      "type": "file",
-      "file": "04_Concept_Nodes/选择性电渗析.md",
-      "x": 720,
-      "y": 4180,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "concept-3043efed00891338",
-      "type": "file",
-      "file": "04_Concept_Nodes/配位识别.md",
-      "x": 0,
-      "y": 4400,
-      "width": 300,
-      "height": 180,
-      "color": "4"
-    },
-    {
-      "id": "concept-5a9cd02115deb4eb",
-      "type": "file",
-      "file": "04_Concept_Nodes/酸回收.md",
-      "x": 360,
-      "y": 4400,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-28f9a6724212f466",
-      "type": "file",
-      "file": "04_Concept_Nodes/锂云母.md",
-      "x": 720,
-      "y": 4400,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-90e77fad7450b240",
-      "type": "file",
-      "file": "04_Concept_Nodes/锂回收.md",
-      "x": 0,
-      "y": 4620,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-d3af0f76a0bee920",
-      "type": "file",
-      "file": "04_Concept_Nodes/锂纯度.md",
-      "x": 360,
-      "y": 4620,
-      "width": 300,
-      "height": 180,
-      "color": "5"
-    },
-    {
-      "id": "concept-428349244c0075ac",
-      "type": "file",
-      "file": "04_Concept_Nodes/锂资源.md",
-      "x": 720,
-      "y": 4620,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-026bcf0ed817f4ca",
-      "type": "file",
-      "file": "04_Concept_Nodes/锂辉石.md",
-      "x": 0,
-      "y": 4840,
-      "width": 300,
-      "height": 180,
-      "color": "1"
-    },
-    {
-      "id": "concept-ba430b1c39f61cfb",
-      "type": "file",
-      "file": "04_Concept_Nodes/静电排斥.md",
-      "x": 360,
-      "y": 4840,
-      "width": 300,
-      "height": 180,
-      "color": "4"
-    },
-    {
-      "id": "concept-324601bddf043ecc",
-      "type": "file",
-      "file": "04_Concept_Nodes/预处理.md",
-      "x": 720,
-      "y": 4840,
-      "width": 300,
-      "height": 180,
-      "color": "6"
-    },
-    {
-      "id": "concept-2c1c0088a07e42de",
-      "type": "file",
-      "file": "04_Concept_Nodes/高压反渗透.md",
-      "x": 0,
-      "y": 5060,
-      "width": 300,
-      "height": 180,
-      "color": "3"
-    },
-    {
-      "id": "paper-37974a325a0b07d7",
-      "type": "file",
-      "file": "02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md",
-      "x": 360,
-      "y": 5060,
-      "width": 300,
-      "height": 160,
-      "color": "6"
-    }
-  ],
-  "edges": [
-    {
-      "id": "edge-1c16da8d91e9c6f5",
-      "fromNode": "concept-dbf1d2b6539bef2d",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-6af72faa997109e9",
-      "fromNode": "concept-dbf1d2b6539bef2d",
-      "fromSide": "right",
-      "toNode": "concept-80cbbd2a0e91593d",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-499ad1477a11a495",
-      "fromNode": "concept-c2f3bc9ffcee427d",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-78bfe7d1e3252fd8",
-      "fromNode": "concept-c2f3bc9ffcee427d",
-      "fromSide": "right",
-      "toNode": "concept-3043efed00891338",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-4f7766f26bb63141",
-      "fromNode": "concept-38756aafa250f405",
-      "fromSide": "right",
-      "toNode": "concept-ba430b1c39f61cfb",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-944af94244e82abc",
-      "fromNode": "concept-05414060b73bbbcf",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-61e9cc85106c88de",
-      "fromNode": "concept-85a95296490a1ae7",
-      "fromSide": "right",
-      "toNode": "concept-d5209dac1c256350",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-5d0137e24b05fc06",
-      "fromNode": "concept-808d0e25cc545d79",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-6e72e137bd94cbc4",
-      "fromNode": "concept-c76db8188abb74a8",
-      "fromSide": "right",
-      "toNode": "concept-d5209dac1c256350",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-3477e1784a1a97ef",
-      "fromNode": "concept-a52bccadc267e252",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-12eb940f307ac20b",
-      "fromNode": "concept-6978f4ac65e570b3",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-6e4c09deca582e33",
-      "fromNode": "concept-6978f4ac65e570b3",
-      "fromSide": "right",
-      "toNode": "concept-3043efed00891338",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-41dbfe44c903cd47",
-      "fromNode": "concept-6978f4ac65e570b3",
-      "fromSide": "right",
-      "toNode": "concept-808d0e25cc545d79",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-7963f79e25b57335",
-      "fromNode": "concept-5e65532181210f70",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-8f76a390f3042866",
-      "fromNode": "concept-5e65532181210f70",
-      "fromSide": "right",
-      "toNode": "concept-808d0e25cc545d79",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-6aff574d4bbd6337",
-      "fromNode": "concept-5e65532181210f70",
-      "fromSide": "right",
-      "toNode": "concept-1d7390547df6c370",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-561c55f21b60b6fa",
-      "fromNode": "concept-c0378442fdf59c9a",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-75660885fd418aef",
-      "fromNode": "concept-c0378442fdf59c9a",
-      "fromSide": "right",
-      "toNode": "concept-3043efed00891338",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-57ad26266df95204",
-      "fromNode": "concept-c0378442fdf59c9a",
-      "fromSide": "right",
-      "toNode": "concept-808d0e25cc545d79",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-3decce85f7dab6f7",
-      "fromNode": "concept-248b26ed54d501b7",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-e74dc2083b9e43db",
-      "fromNode": "concept-1fbced5107f74ed2",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-564e9205d02e8de2",
-      "fromNode": "concept-0271e544f234d67b",
-      "fromSide": "right",
-      "toNode": "concept-17d7f106be82ab77",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-e11e8c8ca4ab6e0f",
-      "fromNode": "concept-1963a803315475d3",
-      "fromSide": "right",
-      "toNode": "concept-d458203dc7ccee08",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-7ffbfc5b4ccaf491",
-      "fromNode": "concept-1963a803315475d3",
-      "fromSide": "right",
-      "toNode": "concept-9ed0f3dc7adbc040",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-fd60b5a3f57ad3e7",
-      "fromNode": "concept-9ed0f3dc7adbc040",
-      "fromSide": "right",
-      "toNode": "concept-11cef29796ad1f6b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-46e068259d952836",
-      "fromNode": "concept-9ed0f3dc7adbc040",
-      "fromSide": "right",
-      "toNode": "concept-a52bccadc267e252",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-7a81a8630e9a2d38",
-      "fromNode": "concept-9ed0f3dc7adbc040",
-      "fromSide": "right",
-      "toNode": "concept-5a9cd02115deb4eb",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-12596530fd8cf0e0",
-      "fromNode": "concept-f39bf880bf67358d",
-      "fromSide": "right",
-      "toNode": "concept-0271e544f234d67b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-f1af1ec704b67a1c",
-      "fromNode": "concept-f39bf880bf67358d",
-      "fromSide": "right",
-      "toNode": "concept-248b26ed54d501b7",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-8b4a2b74f41e66a8",
-      "fromNode": "concept-0bbd457ed95a805a",
-      "fromSide": "right",
-      "toNode": "concept-d3e6a97f01c0735c",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-662bf799ef1bb356",
-      "fromNode": "concept-0bbd457ed95a805a",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-596a4fd73e5d90a3",
-      "fromNode": "concept-a826aa39bdbb96fc",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-ea9c8205c7a7a127",
-      "fromNode": "concept-a826aa39bdbb96fc",
-      "fromSide": "right",
-      "toNode": "concept-0bbd457ed95a805a",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-57fe432a3c1bc2c1",
-      "fromNode": "concept-a826aa39bdbb96fc",
-      "fromSide": "right",
-      "toNode": "concept-db9c18b47bc3436f",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-a8ca9c26080d8a7f",
-      "fromNode": "concept-b9c5b791fbf2339f",
-      "fromSide": "right",
-      "toNode": "concept-428349244c0075ac",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-1203d744271e5b45",
-      "fromNode": "concept-70034dddeca1348a",
-      "fromSide": "right",
-      "toNode": "concept-05e5db2d8d0a2f4a",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-2c79cc20c7d4b6a3",
-      "fromNode": "concept-cb26f42a10031939",
-      "fromSide": "right",
-      "toNode": "concept-0271e544f234d67b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-07686d068cf6cb1c",
-      "fromNode": "concept-cb26f42a10031939",
-      "fromSide": "right",
-      "toNode": "concept-324601bddf043ecc",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-f520abc86df666fa",
-      "fromNode": "concept-85dd84efa223fd0c",
-      "fromSide": "right",
-      "toNode": "concept-098b870319a7a3d6",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-51248fa6bd29d38c",
-      "fromNode": "concept-05e5db2d8d0a2f4a",
-      "fromSide": "right",
-      "toNode": "concept-428349244c0075ac",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-5c7e6a4070f59367",
-      "fromNode": "concept-da32b4b022ec2bae",
-      "fromSide": "right",
-      "toNode": "concept-05e5db2d8d0a2f4a",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-4fe7c03d182a25c3",
-      "fromNode": "concept-42c431bd7b2b3c4a",
-      "fromSide": "right",
-      "toNode": "concept-05e5db2d8d0a2f4a",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-820f07180f4dd863",
-      "fromNode": "concept-64eccf3d882b1d8f",
-      "fromSide": "right",
-      "toNode": "concept-098b870319a7a3d6",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-3bf40f4653616306",
-      "fromNode": "concept-a0e3b8af0fc68a47",
-      "fromSide": "right",
-      "toNode": "concept-d3e6a97f01c0735c",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-b87f3e1990865a53",
-      "fromNode": "concept-a0e3b8af0fc68a47",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-1ed49fa8fc1f8e95",
-      "fromNode": "concept-69740bc1c90c2b2d",
-      "fromSide": "right",
-      "toNode": "concept-098b870319a7a3d6",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-d5cde9959c33bb7b",
-      "fromNode": "concept-b3c8b5ff4f3891b7",
-      "fromSide": "right",
-      "toNode": "concept-17d7f106be82ab77",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-544ad75b207381d7",
-      "fromNode": "concept-99b6119001df2349",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-0a0bbfa4aa5990ae",
-      "fromNode": "concept-99b6119001df2349",
-      "fromSide": "right",
-      "toNode": "concept-808d0e25cc545d79",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-8fc6a8d011195d45",
-      "fromNode": "concept-99b6119001df2349",
-      "fromSide": "right",
-      "toNode": "concept-db9c18b47bc3436f",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-7093762a545d913a",
-      "fromNode": "concept-385b370112e23252",
-      "fromSide": "right",
-      "toNode": "concept-098b870319a7a3d6",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-93997c40e6491772",
-      "fromNode": "concept-098b870319a7a3d6",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-4635ab0ddec25276",
-      "fromNode": "concept-098b870319a7a3d6",
-      "fromSide": "right",
-      "toNode": "concept-814b093fbc71b9b5",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-0c43df451472cf80",
-      "fromNode": "concept-814b093fbc71b9b5",
-      "fromSide": "right",
-      "toNode": "concept-428349244c0075ac",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-be096b452947602e",
-      "fromNode": "concept-a8413435c303619b",
-      "fromSide": "right",
-      "toNode": "concept-05e5db2d8d0a2f4a",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-1c7f09a42cd73126",
-      "fromNode": "concept-a8413435c303619b",
-      "fromSide": "right",
-      "toNode": "concept-814b093fbc71b9b5",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-7e15dd3f0113795b",
-      "fromNode": "concept-a8413435c303619b",
-      "fromSide": "right",
-      "toNode": "concept-64eccf3d882b1d8f",
-      "toSide": "left",
-      "label": "prepared_by"
-    },
-    {
-      "id": "edge-831c37f02ca08c38",
-      "fromNode": "concept-5612d81de4250bac",
-      "fromSide": "right",
-      "toNode": "concept-11cef29796ad1f6b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-5b92458286c51f0f",
-      "fromNode": "concept-5612d81de4250bac",
-      "fromSide": "right",
-      "toNode": "concept-05414060b73bbbcf",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-d2094fe568416306",
-      "fromNode": "concept-5612d81de4250bac",
-      "fromSide": "right",
-      "toNode": "concept-38756aafa250f405",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-10d86d03971c2f73",
-      "fromNode": "concept-11cef29796ad1f6b",
-      "fromSide": "right",
-      "toNode": "concept-17d7f106be82ab77",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-763c4a936ea3002b",
-      "fromNode": "concept-54ca97b8bfa73530",
-      "fromSide": "right",
-      "toNode": "concept-05e5db2d8d0a2f4a",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-15384d6f8f4f7263",
-      "fromNode": "concept-eed8d59c77a6659a",
-      "fromSide": "right",
-      "toNode": "concept-d3e6a97f01c0735c",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-e6412a0185bb96d0",
-      "fromNode": "concept-eed8d59c77a6659a",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-d286966c43a7b7f3",
-      "fromNode": "concept-d458203dc7ccee08",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-ef2ba5d82d2058d6",
-      "fromNode": "concept-d458203dc7ccee08",
-      "fromSide": "right",
-      "toNode": "concept-5612d81de4250bac",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-f3aa8d20881526e0",
-      "fromNode": "concept-d458203dc7ccee08",
-      "fromSide": "right",
-      "toNode": "concept-38756aafa250f405",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-506ee66b09140049",
-      "fromNode": "concept-f4bb832fba83254f",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-8dd0e30e64031075",
-      "fromNode": "concept-f4bb832fba83254f",
-      "fromSide": "right",
-      "toNode": "concept-05414060b73bbbcf",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-197d616aa44c9b02",
-      "fromNode": "concept-f4bb832fba83254f",
-      "fromSide": "right",
-      "toNode": "concept-5612d81de4250bac",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-2457b2f7754654e5",
-      "fromNode": "concept-f4bb832fba83254f",
-      "fromSide": "right",
-      "toNode": "concept-54c9d69e4ab86043",
-      "toSide": "left",
-      "label": "prepared_by"
-    },
-    {
-      "id": "edge-a0b87ffde0c134da",
-      "fromNode": "concept-f4bb832fba83254f",
-      "fromSide": "right",
-      "toNode": "concept-85a95296490a1ae7",
-      "toSide": "left",
-      "label": "has_property"
-    },
-    {
-      "id": "edge-b2ffbca9db6b85de",
-      "fromNode": "concept-a9f4749797725557",
-      "fromSide": "right",
-      "toNode": "concept-0271e544f234d67b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-132bf23d40f578c9",
-      "fromNode": "concept-a9f4749797725557",
-      "fromSide": "right",
-      "toNode": "concept-05414060b73bbbcf",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-dbb842ecc4199ace",
-      "fromNode": "concept-a9f4749797725557",
-      "fromSide": "right",
-      "toNode": "concept-324601bddf043ecc",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-34ada84640320512",
-      "fromNode": "concept-a9f4749797725557",
-      "fromSide": "right",
-      "toNode": "concept-38756aafa250f405",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-1916aa1652b18d76",
-      "fromNode": "concept-00aff774158ff375",
-      "fromSide": "right",
-      "toNode": "concept-ce8ce09c94edcb22",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-3ad2ebff8e58f293",
-      "fromNode": "concept-00aff774158ff375",
-      "fromSide": "right",
-      "toNode": "concept-05414060b73bbbcf",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-ba53910980f926bb",
-      "fromNode": "concept-00aff774158ff375",
-      "fromSide": "right",
-      "toNode": "concept-38756aafa250f405",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-284367c8b981b07a",
-      "fromNode": "concept-17d7f106be82ab77",
-      "fromSide": "right",
-      "toNode": "concept-d3e6a97f01c0735c",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-9b6d4bd62a17ffca",
-      "fromNode": "concept-17d7f106be82ab77",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-fba182e1c819c5b5",
-      "fromNode": "concept-ce8ce09c94edcb22",
-      "fromSide": "right",
-      "toNode": "concept-bcea1c87f145b817",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-39fa36834f0679b0",
-      "fromNode": "concept-ce8ce09c94edcb22",
-      "fromSide": "right",
-      "toNode": "concept-7e0e92672c36e3f3",
-      "toSide": "left",
-      "label": "has_property"
-    },
-    {
-      "id": "edge-368f95e7647d9009",
-      "fromNode": "concept-13c1f3fb2880c61f",
-      "fromSide": "right",
-      "toNode": "concept-11cef29796ad1f6b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-c2cfd31fa27f48dc",
-      "fromNode": "concept-13c1f3fb2880c61f",
-      "fromSide": "right",
-      "toNode": "concept-808d0e25cc545d79",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-1bf12eaf12419153",
-      "fromNode": "concept-4f4fab85b5f5bdb5",
-      "fromSide": "right",
-      "toNode": "concept-b3c8b5ff4f3891b7",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-72e1a04ce2576d9e",
-      "fromNode": "concept-4f4fab85b5f5bdb5",
-      "fromSide": "right",
-      "toNode": "concept-1fbced5107f74ed2",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-d62834c8f317f69c",
-      "fromNode": "concept-8ec32fc6e9729eef",
-      "fromSide": "right",
-      "toNode": "concept-4f4fab85b5f5bdb5",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-02b7968a3834f687",
-      "fromNode": "concept-8ec32fc6e9729eef",
-      "fromSide": "right",
-      "toNode": "concept-1fbced5107f74ed2",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-89fed1e26b582aa1",
-      "fromNode": "concept-54c9d69e4ab86043",
-      "fromSide": "right",
-      "toNode": "concept-ba430b1c39f61cfb",
-      "toSide": "left",
-      "label": "acts_via"
-    },
-    {
-      "id": "edge-bd01aa64bf55002c",
-      "fromNode": "concept-54c9d69e4ab86043",
-      "fromSide": "right",
-      "toNode": "concept-85a95296490a1ae7",
-      "toSide": "left",
-      "label": "improves"
-    },
-    {
-      "id": "edge-0d62c084f2770806",
-      "fromNode": "concept-4aba571acc235b6f",
-      "fromSide": "right",
-      "toNode": "concept-0271e544f234d67b",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-9350b108db0d92c2",
-      "fromNode": "concept-4aba571acc235b6f",
-      "fromSide": "right",
-      "toNode": "concept-324601bddf043ecc",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-f1e666f35778a0c1",
-      "fromNode": "concept-eb95c9efd2d91741",
-      "fromSide": "right",
-      "toNode": "concept-5612d81de4250bac",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-4d692e1e7ebe05c8",
-      "fromNode": "concept-eb95c9efd2d91741",
-      "fromSide": "right",
-      "toNode": "concept-248b26ed54d501b7",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-27e91fbc524ec9f7",
-      "fromNode": "concept-5a9cd02115deb4eb",
-      "fromSide": "right",
-      "toNode": "concept-098b870319a7a3d6",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-fdd0f726bc2b7d49",
-      "fromNode": "concept-28f9a6724212f466",
-      "fromSide": "right",
-      "toNode": "concept-b9c5b791fbf2339f",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-ee3304fa85110fb2",
-      "fromNode": "concept-90e77fad7450b240",
-      "fromSide": "right",
-      "toNode": "concept-428349244c0075ac",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-27af0cb864a59f32",
-      "fromNode": "concept-90e77fad7450b240",
-      "fromSide": "right",
-      "toNode": "concept-92bdf341b2f67481",
-      "toSide": "left",
-      "label": "has_property"
-    },
-    {
-      "id": "edge-260040b2ce17ba6c",
-      "fromNode": "concept-90e77fad7450b240",
-      "fromSide": "right",
-      "toNode": "concept-2ef030f119f4d911",
-      "toSide": "left",
-      "label": "has_property"
-    },
-    {
-      "id": "edge-b00f9035e22fbe08",
-      "fromNode": "concept-d3af0f76a0bee920",
-      "fromSide": "right",
-      "toNode": "concept-d5209dac1c256350",
-      "toSide": "left",
-      "label": "related_to"
-    },
-    {
-      "id": "edge-919959d1d52d0939",
-      "fromNode": "concept-026bcf0ed817f4ca",
-      "fromSide": "right",
-      "toNode": "concept-b9c5b791fbf2339f",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-fb230945e27cd947",
-      "fromNode": "concept-ba430b1c39f61cfb",
-      "fromSide": "right",
-      "toNode": "concept-85a95296490a1ae7",
-      "toSide": "left",
-      "label": "improves"
-    },
-    {
-      "id": "edge-c6d7d00f505ddb6d",
-      "fromNode": "concept-324601bddf043ecc",
-      "fromSide": "right",
-      "toNode": "concept-90e77fad7450b240",
-      "toSide": "left",
-      "label": "component_of"
-    },
-    {
-      "id": "edge-fc195133e7331e99",
-      "fromNode": "concept-2c1c0088a07e42de",
-      "fromSide": "right",
-      "toNode": "concept-f39bf880bf67358d",
-      "toSide": "left",
-      "label": "is_a"
-    },
-    {
-      "id": "edge-44a81fb855d1b6d2",
-      "fromNode": "concept-2c1c0088a07e42de",
-      "fromSide": "right",
-      "toNode": "concept-1fbced5107f74ed2",
-      "toSide": "left",
-      "label": "used_for"
-    },
-    {
-      "id": "edge-cebb71f31e582343",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-f4bb832fba83254f",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-3db83e06eed7babe",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-d458203dc7ccee08",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-1100e7ce16783e72",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-05414060b73bbbcf",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-65356b14c548d7d5",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-54c9d69e4ab86043",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-49de752bc57e020a",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-ba430b1c39f61cfb",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-887cd6717a3e795b",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-38756aafa250f405",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-a90fb33b56a6a67e",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-5612d81de4250bac",
-      "toSide": "left",
-      "label": "tagged"
-    },
-    {
-      "id": "edge-54a02bc68bc21ba5",
-      "fromNode": "paper-37974a325a0b07d7",
-      "fromSide": "right",
-      "toNode": "concept-85a95296490a1ae7",
-      "toSide": "left",
-      "label": "tagged"
-    }
-  ]
+	"nodes":[
+		{"id":"concept-dbf1d2b6539bef2d","type":"file","file":"04_Concept_Nodes/2D材料膜.md","x":0,"y":0,"width":300,"height":180,"color":"2"},
+		{"id":"concept-c2f3bc9ffcee427d","type":"file","file":"04_Concept_Nodes/COF膜.md","x":360,"y":0,"width":300,"height":180,"color":"2"},
+		{"id":"concept-38756aafa250f405","type":"file","file":"04_Concept_Nodes/Donnan排斥.md","x":720,"y":0,"width":300,"height":180,"color":"4"},
+		{"id":"concept-05414060b73bbbcf","type":"file","file":"04_Concept_Nodes/Li-Mg分离.md","x":0,"y":220,"width":300,"height":180,"color":"6"},
+		{"id":"concept-85a95296490a1ae7","type":"file","file":"04_Concept_Nodes/Li-Mg选择性.md","x":360,"y":220,"width":300,"height":180,"color":"5"},
+		{"id":"concept-808d0e25cc545d79","type":"file","file":"04_Concept_Nodes/Li-Na分离.md","x":720,"y":220,"width":300,"height":180,"color":"6"},
+		{"id":"concept-c76db8188abb74a8","type":"file","file":"04_Concept_Nodes/Li-Na选择性.md","x":0,"y":440,"width":300,"height":180,"color":"5"},
+		{"id":"concept-a52bccadc267e252","type":"file","file":"04_Concept_Nodes/LiOH转化.md","x":360,"y":440,"width":300,"height":180,"color":"6"},
+		{"id":"concept-6978f4ac65e570b3","type":"file","file":"04_Concept_Nodes/MOF膜.md","x":720,"y":440,"width":300,"height":180,"color":"2"},
+		{"id":"concept-1d7390547df6c370","type":"file","file":"04_Concept_Nodes/人工离子通道.md","x":0,"y":660,"width":300,"height":180,"color":"4"},
+		{"id":"concept-5e65532181210f70","type":"file","file":"04_Concept_Nodes/仿生通道膜.md","x":360,"y":660,"width":300,"height":180,"color":"2"},
+		{"id":"concept-c0378442fdf59c9a","type":"file","file":"04_Concept_Nodes/冠醚膜.md","x":720,"y":660,"width":300,"height":180,"color":"2"},
+		{"id":"concept-248b26ed54d501b7","type":"file","file":"04_Concept_Nodes/卤水浓缩.md","x":0,"y":880,"width":300,"height":180,"color":"6"},
+		{"id":"concept-1fbced5107f74ed2","type":"file","file":"04_Concept_Nodes/卤水管理.md","x":360,"y":880,"width":300,"height":180,"color":"6"},
+		{"id":"concept-0271e544f234d67b","type":"file","file":"04_Concept_Nodes/压力驱动膜工艺.md","x":720,"y":880,"width":300,"height":180,"color":"3"},
+		{"id":"concept-1963a803315475d3","type":"file","file":"04_Concept_Nodes/双极膜.md","x":0,"y":1100,"width":300,"height":180,"color":"2"},
+		{"id":"concept-9ed0f3dc7adbc040","type":"file","file":"04_Concept_Nodes/双极膜电渗析.md","x":360,"y":1100,"width":300,"height":180,"color":"3"},
+		{"id":"concept-f39bf880bf67358d","type":"file","file":"04_Concept_Nodes/反渗透.md","x":720,"y":1100,"width":300,"height":180,"color":"3"},
+		{"id":"concept-0bbd457ed95a805a","type":"file","file":"04_Concept_Nodes/吸附法.md","x":0,"y":1320,"width":300,"height":180,"color":"3"},
+		{"id":"concept-a826aa39bdbb96fc","type":"file","file":"04_Concept_Nodes/吸附膜.md","x":360,"y":1320,"width":300,"height":180,"color":"2"},
+		{"id":"concept-b9c5b791fbf2339f","type":"file","file":"04_Concept_Nodes/固相锂矿.md","x":720,"y":1320,"width":300,"height":180,"color":"1"},
+		{"id":"concept-70034dddeca1348a","type":"file","file":"04_Concept_Nodes/地热卤水.md","x":0,"y":1540,"width":300,"height":180,"color":"1"},
+		{"id":"concept-80cbbd2a0e91593d","type":"file","file":"04_Concept_Nodes/尺寸筛分.md","x":360,"y":1540,"width":300,"height":180,"color":"4"},
+		{"id":"concept-db9c18b47bc3436f","type":"file","file":"04_Concept_Nodes/嵌入-脱嵌.md","x":720,"y":1540,"width":300,"height":180,"color":"4"},
+		{"id":"concept-cb26f42a10031939","type":"file","file":"04_Concept_Nodes/微滤.md","x":0,"y":1760,"width":300,"height":180,"color":"3"},
+		{"id":"concept-85dd84efa223fd0c","type":"file","file":"04_Concept_Nodes/拆解预处理.md","x":360,"y":1760,"width":300,"height":180,"color":"6"},
+		{"id":"concept-92bdf341b2f67481","type":"file","file":"04_Concept_Nodes/比能耗.md","x":720,"y":1760,"width":300,"height":180,"color":"5"},
+		{"id":"concept-7e0e92672c36e3f3","type":"file","file":"04_Concept_Nodes/水渗透性.md","x":0,"y":1980,"width":300,"height":180,"color":"5"},
+		{"id":"concept-05e5db2d8d0a2f4a","type":"file","file":"04_Concept_Nodes/水相锂源.md","x":360,"y":1980,"width":300,"height":180,"color":"1"},
+		{"id":"concept-2ef030f119f4d911","type":"file","file":"04_Concept_Nodes/水耗.md","x":720,"y":1980,"width":300,"height":180,"color":"5"},
+		{"id":"concept-da32b4b022ec2bae","type":"file","file":"04_Concept_Nodes/油田采出水.md","x":0,"y":2200,"width":300,"height":180,"color":"1"},
+		{"id":"concept-42c431bd7b2b3c4a","type":"file","file":"04_Concept_Nodes/海水.md","x":360,"y":2200,"width":300,"height":180,"color":"1"},
+		{"id":"concept-64eccf3d882b1d8f","type":"file","file":"04_Concept_Nodes/湿法浸出.md","x":720,"y":2200,"width":300,"height":180,"color":"3"},
+		{"id":"concept-a0e3b8af0fc68a47","type":"file","file":"04_Concept_Nodes/溶剂萃取法.md","x":0,"y":2420,"width":300,"height":180,"color":"3"},
+		{"id":"concept-69740bc1c90c2b2d","type":"file","file":"04_Concept_Nodes/火法冶金.md","x":360,"y":2420,"width":300,"height":180,"color":"3"},
+		{"id":"concept-b3c8b5ff4f3891b7","type":"file","file":"04_Concept_Nodes/热驱动膜工艺.md","x":720,"y":2420,"width":300,"height":180,"color":"3"},
+		{"id":"concept-99b6119001df2349","type":"file","file":"04_Concept_Nodes/玻璃陶瓷膜.md","x":0,"y":2640,"width":300,"height":180,"color":"2"},
+		{"id":"concept-385b370112e23252","type":"file","file":"04_Concept_Nodes/生物浸出.md","x":360,"y":2640,"width":300,"height":180,"color":"3"},
+		{"id":"concept-098b870319a7a3d6","type":"file","file":"04_Concept_Nodes/电池回收.md","x":720,"y":2640,"width":300,"height":180,"color":"6"},
+		{"id":"concept-814b093fbc71b9b5","type":"file","file":"04_Concept_Nodes/电池废料.md","x":0,"y":2860,"width":300,"height":180,"color":"1"},
+		{"id":"concept-a8413435c303619b","type":"file","file":"04_Concept_Nodes/电池浸出液.md","x":360,"y":2860,"width":300,"height":180,"color":"1"},
+		{"id":"concept-5612d81de4250bac","type":"file","file":"04_Concept_Nodes/电渗析.md","x":720,"y":2860,"width":300,"height":180,"color":"3"},
+		{"id":"concept-11cef29796ad1f6b","type":"file","file":"04_Concept_Nodes/电驱动膜工艺.md","x":0,"y":3080,"width":300,"height":180,"color":"3"},
+		{"id":"concept-54ca97b8bfa73530","type":"file","file":"04_Concept_Nodes/盐湖卤水.md","x":360,"y":3080,"width":300,"height":180,"color":"1"},
+		{"id":"concept-d3e6a97f01c0735c","type":"file","file":"04_Concept_Nodes/直接锂提取DLE.md","x":720,"y":3080,"width":300,"height":180,"color":"3"},
+		{"id":"concept-eed8d59c77a6659a","type":"file","file":"04_Concept_Nodes/离子交换法.md","x":0,"y":3300,"width":300,"height":180,"color":"3"},
+		{"id":"concept-d458203dc7ccee08","type":"file","file":"04_Concept_Nodes/离子交换膜.md","x":360,"y":3300,"width":300,"height":180,"color":"2"},
+		{"id":"concept-f4bb832fba83254f","type":"file","file":"04_Concept_Nodes/离子选择膜.md","x":720,"y":3300,"width":300,"height":180,"color":"2"},
+		{"id":"concept-a9f4749797725557","type":"file","file":"04_Concept_Nodes/纳滤.md","x":0,"y":3520,"width":300,"height":180,"color":"3"},
+		{"id":"concept-00aff774158ff375","type":"file","file":"04_Concept_Nodes/聚酰胺膜.md","x":360,"y":3520,"width":300,"height":180,"color":"2"},
+		{"id":"concept-bcea1c87f145b817","type":"file","file":"04_Concept_Nodes/膜.md","x":720,"y":3520,"width":300,"height":180,"color":"1"},
+		{"id":"concept-17d7f106be82ab77","type":"file","file":"04_Concept_Nodes/膜工艺.md","x":0,"y":3740,"width":300,"height":180,"color":"3"},
+		{"id":"concept-ce8ce09c94edcb22","type":"file","file":"04_Concept_Nodes/膜材料.md","x":360,"y":3740,"width":300,"height":180,"color":"2"},
+		{"id":"concept-13c1f3fb2880c61f","type":"file","file":"04_Concept_Nodes/膜电容去离子.md","x":720,"y":3740,"width":300,"height":180,"color":"3"},
+		{"id":"concept-4f4fab85b5f5bdb5","type":"file","file":"04_Concept_Nodes/膜蒸馏.md","x":0,"y":3960,"width":300,"height":180,"color":"3"},
+		{"id":"concept-8ec32fc6e9729eef","type":"file","file":"04_Concept_Nodes/膜蒸馏结晶.md","x":360,"y":3960,"width":300,"height":180,"color":"3"},
+		{"id":"concept-54c9d69e4ab86043","type":"file","file":"04_Concept_Nodes/表面正电化.md","x":720,"y":3960,"width":300,"height":180,"color":"3"},
+		{"id":"concept-4aba571acc235b6f","type":"file","file":"04_Concept_Nodes/超滤.md","x":0,"y":4180,"width":300,"height":180,"color":"3"},
+		{"id":"concept-d5209dac1c256350","type":"file","file":"04_Concept_Nodes/选择性.md","x":360,"y":4180,"width":300,"height":180,"color":"5"},
+		{"id":"concept-eb95c9efd2d91741","type":"file","file":"04_Concept_Nodes/选择性电渗析.md","x":720,"y":4180,"width":300,"height":180,"color":"3"},
+		{"id":"concept-3043efed00891338","type":"file","file":"04_Concept_Nodes/配位识别.md","x":0,"y":4400,"width":300,"height":180,"color":"4"},
+		{"id":"concept-5a9cd02115deb4eb","type":"file","file":"04_Concept_Nodes/酸回收.md","x":360,"y":4400,"width":300,"height":180,"color":"6"},
+		{"id":"concept-28f9a6724212f466","type":"file","file":"04_Concept_Nodes/锂云母.md","x":720,"y":4400,"width":300,"height":180,"color":"1"},
+		{"id":"concept-90e77fad7450b240","type":"file","file":"04_Concept_Nodes/锂回收.md","x":0,"y":4620,"width":300,"height":180,"color":"6"},
+		{"id":"concept-d3af0f76a0bee920","type":"file","file":"04_Concept_Nodes/锂纯度.md","x":360,"y":4620,"width":300,"height":180,"color":"5"},
+		{"id":"concept-428349244c0075ac","type":"file","file":"04_Concept_Nodes/锂资源.md","x":720,"y":4620,"width":300,"height":180,"color":"1"},
+		{"id":"concept-026bcf0ed817f4ca","type":"file","file":"04_Concept_Nodes/锂辉石.md","x":0,"y":4840,"width":300,"height":180,"color":"1"},
+		{"id":"concept-ba430b1c39f61cfb","type":"file","file":"04_Concept_Nodes/静电排斥.md","x":360,"y":4840,"width":300,"height":180,"color":"4"},
+		{"id":"concept-324601bddf043ecc","type":"file","file":"04_Concept_Nodes/预处理.md","x":720,"y":4840,"width":300,"height":180,"color":"6"},
+		{"id":"concept-2c1c0088a07e42de","type":"file","file":"04_Concept_Nodes/高压反渗透.md","x":0,"y":5060,"width":300,"height":180,"color":"3"},
+		{"id":"paper-37974a325a0b07d7","type":"file","file":"02_Paper_Position_Cards/2024-Wang-Highly-positively-charged-membrane-Li-Mg-separation.md","x":360,"y":5060,"width":300,"height":160,"color":"6"}
+	],
+	"edges":[
+		{"id":"edge-1c16da8d91e9c6f5","fromNode":"concept-dbf1d2b6539bef2d","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-6af72faa997109e9","fromNode":"concept-dbf1d2b6539bef2d","fromSide":"right","toNode":"concept-80cbbd2a0e91593d","toSide":"left","label":"acts_via"},
+		{"id":"edge-499ad1477a11a495","fromNode":"concept-c2f3bc9ffcee427d","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-78bfe7d1e3252fd8","fromNode":"concept-c2f3bc9ffcee427d","fromSide":"right","toNode":"concept-3043efed00891338","toSide":"left","label":"acts_via"},
+		{"id":"edge-4f7766f26bb63141","fromNode":"concept-38756aafa250f405","fromSide":"right","toNode":"concept-ba430b1c39f61cfb","toSide":"left","label":"is_a"},
+		{"id":"edge-944af94244e82abc","fromNode":"concept-05414060b73bbbcf","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"component_of"},
+		{"id":"edge-61e9cc85106c88de","fromNode":"concept-85a95296490a1ae7","fromSide":"right","toNode":"concept-d5209dac1c256350","toSide":"left","label":"is_a"},
+		{"id":"edge-5d0137e24b05fc06","fromNode":"concept-808d0e25cc545d79","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"component_of"},
+		{"id":"edge-6e72e137bd94cbc4","fromNode":"concept-c76db8188abb74a8","fromSide":"right","toNode":"concept-d5209dac1c256350","toSide":"left","label":"is_a"},
+		{"id":"edge-3477e1784a1a97ef","fromNode":"concept-a52bccadc267e252","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"component_of"},
+		{"id":"edge-12eb940f307ac20b","fromNode":"concept-6978f4ac65e570b3","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-6e4c09deca582e33","fromNode":"concept-6978f4ac65e570b3","fromSide":"right","toNode":"concept-3043efed00891338","toSide":"left","label":"acts_via"},
+		{"id":"edge-41dbfe44c903cd47","fromNode":"concept-6978f4ac65e570b3","fromSide":"right","toNode":"concept-808d0e25cc545d79","toSide":"left","label":"used_for"},
+		{"id":"edge-7963f79e25b57335","fromNode":"concept-5e65532181210f70","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-8f76a390f3042866","fromNode":"concept-5e65532181210f70","fromSide":"right","toNode":"concept-808d0e25cc545d79","toSide":"left","label":"used_for"},
+		{"id":"edge-6aff574d4bbd6337","fromNode":"concept-5e65532181210f70","fromSide":"right","toNode":"concept-1d7390547df6c370","toSide":"left","label":"acts_via"},
+		{"id":"edge-561c55f21b60b6fa","fromNode":"concept-c0378442fdf59c9a","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-75660885fd418aef","fromNode":"concept-c0378442fdf59c9a","fromSide":"right","toNode":"concept-3043efed00891338","toSide":"left","label":"acts_via"},
+		{"id":"edge-57ad26266df95204","fromNode":"concept-c0378442fdf59c9a","fromSide":"right","toNode":"concept-808d0e25cc545d79","toSide":"left","label":"used_for"},
+		{"id":"edge-3decce85f7dab6f7","fromNode":"concept-248b26ed54d501b7","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"component_of"},
+		{"id":"edge-e74dc2083b9e43db","fromNode":"concept-1fbced5107f74ed2","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"component_of"},
+		{"id":"edge-564e9205d02e8de2","fromNode":"concept-0271e544f234d67b","fromSide":"right","toNode":"concept-17d7f106be82ab77","toSide":"left","label":"is_a"},
+		{"id":"edge-e11e8c8ca4ab6e0f","fromNode":"concept-1963a803315475d3","fromSide":"right","toNode":"concept-d458203dc7ccee08","toSide":"left","label":"is_a"},
+		{"id":"edge-7ffbfc5b4ccaf491","fromNode":"concept-1963a803315475d3","fromSide":"right","toNode":"concept-9ed0f3dc7adbc040","toSide":"left","label":"component_of"},
+		{"id":"edge-fd60b5a3f57ad3e7","fromNode":"concept-9ed0f3dc7adbc040","fromSide":"right","toNode":"concept-11cef29796ad1f6b","toSide":"left","label":"is_a"},
+		{"id":"edge-46e068259d952836","fromNode":"concept-9ed0f3dc7adbc040","fromSide":"right","toNode":"concept-a52bccadc267e252","toSide":"left","label":"used_for"},
+		{"id":"edge-7a81a8630e9a2d38","fromNode":"concept-9ed0f3dc7adbc040","fromSide":"right","toNode":"concept-5a9cd02115deb4eb","toSide":"left","label":"used_for"},
+		{"id":"edge-12596530fd8cf0e0","fromNode":"concept-f39bf880bf67358d","fromSide":"right","toNode":"concept-0271e544f234d67b","toSide":"left","label":"is_a"},
+		{"id":"edge-f1af1ec704b67a1c","fromNode":"concept-f39bf880bf67358d","fromSide":"right","toNode":"concept-248b26ed54d501b7","toSide":"left","label":"used_for"},
+		{"id":"edge-8b4a2b74f41e66a8","fromNode":"concept-0bbd457ed95a805a","fromSide":"right","toNode":"concept-d3e6a97f01c0735c","toSide":"left","label":"is_a"},
+		{"id":"edge-662bf799ef1bb356","fromNode":"concept-0bbd457ed95a805a","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"used_for"},
+		{"id":"edge-596a4fd73e5d90a3","fromNode":"concept-a826aa39bdbb96fc","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-ea9c8205c7a7a127","fromNode":"concept-a826aa39bdbb96fc","fromSide":"right","toNode":"concept-0bbd457ed95a805a","toSide":"left","label":"related_to"},
+		{"id":"edge-57fe432a3c1bc2c1","fromNode":"concept-a826aa39bdbb96fc","fromSide":"right","toNode":"concept-db9c18b47bc3436f","toSide":"left","label":"acts_via"},
+		{"id":"edge-a8ca9c26080d8a7f","fromNode":"concept-b9c5b791fbf2339f","fromSide":"right","toNode":"concept-428349244c0075ac","toSide":"left","label":"is_a"},
+		{"id":"edge-1203d744271e5b45","fromNode":"concept-70034dddeca1348a","fromSide":"right","toNode":"concept-05e5db2d8d0a2f4a","toSide":"left","label":"is_a"},
+		{"id":"edge-2c79cc20c7d4b6a3","fromNode":"concept-cb26f42a10031939","fromSide":"right","toNode":"concept-0271e544f234d67b","toSide":"left","label":"is_a"},
+		{"id":"edge-07686d068cf6cb1c","fromNode":"concept-cb26f42a10031939","fromSide":"right","toNode":"concept-324601bddf043ecc","toSide":"left","label":"used_for"},
+		{"id":"edge-f520abc86df666fa","fromNode":"concept-85dd84efa223fd0c","fromSide":"right","toNode":"concept-098b870319a7a3d6","toSide":"left","label":"component_of"},
+		{"id":"edge-51248fa6bd29d38c","fromNode":"concept-05e5db2d8d0a2f4a","fromSide":"right","toNode":"concept-428349244c0075ac","toSide":"left","label":"is_a"},
+		{"id":"edge-5c7e6a4070f59367","fromNode":"concept-da32b4b022ec2bae","fromSide":"right","toNode":"concept-05e5db2d8d0a2f4a","toSide":"left","label":"is_a"},
+		{"id":"edge-4fe7c03d182a25c3","fromNode":"concept-42c431bd7b2b3c4a","fromSide":"right","toNode":"concept-05e5db2d8d0a2f4a","toSide":"left","label":"is_a"},
+		{"id":"edge-820f07180f4dd863","fromNode":"concept-64eccf3d882b1d8f","fromSide":"right","toNode":"concept-098b870319a7a3d6","toSide":"left","label":"component_of"},
+		{"id":"edge-3bf40f4653616306","fromNode":"concept-a0e3b8af0fc68a47","fromSide":"right","toNode":"concept-d3e6a97f01c0735c","toSide":"left","label":"is_a"},
+		{"id":"edge-b87f3e1990865a53","fromNode":"concept-a0e3b8af0fc68a47","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"used_for"},
+		{"id":"edge-1ed49fa8fc1f8e95","fromNode":"concept-69740bc1c90c2b2d","fromSide":"right","toNode":"concept-098b870319a7a3d6","toSide":"left","label":"component_of"},
+		{"id":"edge-d5cde9959c33bb7b","fromNode":"concept-b3c8b5ff4f3891b7","fromSide":"right","toNode":"concept-17d7f106be82ab77","toSide":"left","label":"is_a"},
+		{"id":"edge-544ad75b207381d7","fromNode":"concept-99b6119001df2349","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-0a0bbfa4aa5990ae","fromNode":"concept-99b6119001df2349","fromSide":"right","toNode":"concept-808d0e25cc545d79","toSide":"left","label":"used_for"},
+		{"id":"edge-8fc6a8d011195d45","fromNode":"concept-99b6119001df2349","fromSide":"right","toNode":"concept-db9c18b47bc3436f","toSide":"left","label":"acts_via"},
+		{"id":"edge-7093762a545d913a","fromNode":"concept-385b370112e23252","fromSide":"right","toNode":"concept-098b870319a7a3d6","toSide":"left","label":"component_of"},
+		{"id":"edge-93997c40e6491772","fromNode":"concept-098b870319a7a3d6","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"related_to"},
+		{"id":"edge-4635ab0ddec25276","fromNode":"concept-098b870319a7a3d6","fromSide":"right","toNode":"concept-814b093fbc71b9b5","toSide":"left","label":"related_to"},
+		{"id":"edge-0c43df451472cf80","fromNode":"concept-814b093fbc71b9b5","fromSide":"right","toNode":"concept-428349244c0075ac","toSide":"left","label":"is_a"},
+		{"id":"edge-be096b452947602e","fromNode":"concept-a8413435c303619b","fromSide":"right","toNode":"concept-05e5db2d8d0a2f4a","toSide":"left","label":"is_a"},
+		{"id":"edge-1c7f09a42cd73126","fromNode":"concept-a8413435c303619b","fromSide":"right","toNode":"concept-814b093fbc71b9b5","toSide":"left","label":"related_to"},
+		{"id":"edge-7e15dd3f0113795b","fromNode":"concept-a8413435c303619b","fromSide":"right","toNode":"concept-64eccf3d882b1d8f","toSide":"left","label":"prepared_by"},
+		{"id":"edge-831c37f02ca08c38","fromNode":"concept-5612d81de4250bac","fromSide":"right","toNode":"concept-11cef29796ad1f6b","toSide":"left","label":"is_a"},
+		{"id":"edge-5b92458286c51f0f","fromNode":"concept-5612d81de4250bac","fromSide":"right","toNode":"concept-05414060b73bbbcf","toSide":"left","label":"used_for"},
+		{"id":"edge-d2094fe568416306","fromNode":"concept-5612d81de4250bac","fromSide":"right","toNode":"concept-38756aafa250f405","toSide":"left","label":"acts_via"},
+		{"id":"edge-10d86d03971c2f73","fromNode":"concept-11cef29796ad1f6b","fromSide":"right","toNode":"concept-17d7f106be82ab77","toSide":"left","label":"is_a"},
+		{"id":"edge-763c4a936ea3002b","fromNode":"concept-54ca97b8bfa73530","fromSide":"right","toNode":"concept-05e5db2d8d0a2f4a","toSide":"left","label":"is_a"},
+		{"id":"edge-15384d6f8f4f7263","fromNode":"concept-eed8d59c77a6659a","fromSide":"right","toNode":"concept-d3e6a97f01c0735c","toSide":"left","label":"is_a"},
+		{"id":"edge-e6412a0185bb96d0","fromNode":"concept-eed8d59c77a6659a","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"used_for"},
+		{"id":"edge-d286966c43a7b7f3","fromNode":"concept-d458203dc7ccee08","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-ef2ba5d82d2058d6","fromNode":"concept-d458203dc7ccee08","fromSide":"right","toNode":"concept-5612d81de4250bac","toSide":"left","label":"component_of"},
+		{"id":"edge-f3aa8d20881526e0","fromNode":"concept-d458203dc7ccee08","fromSide":"right","toNode":"concept-38756aafa250f405","toSide":"left","label":"acts_via"},
+		{"id":"edge-506ee66b09140049","fromNode":"concept-f4bb832fba83254f","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-8dd0e30e64031075","fromNode":"concept-f4bb832fba83254f","fromSide":"right","toNode":"concept-05414060b73bbbcf","toSide":"left","label":"used_for"},
+		{"id":"edge-197d616aa44c9b02","fromNode":"concept-f4bb832fba83254f","fromSide":"right","toNode":"concept-5612d81de4250bac","toSide":"left","label":"component_of"},
+		{"id":"edge-2457b2f7754654e5","fromNode":"concept-f4bb832fba83254f","fromSide":"right","toNode":"concept-54c9d69e4ab86043","toSide":"left","label":"prepared_by"},
+		{"id":"edge-a0b87ffde0c134da","fromNode":"concept-f4bb832fba83254f","fromSide":"right","toNode":"concept-85a95296490a1ae7","toSide":"left","label":"has_property"},
+		{"id":"edge-b2ffbca9db6b85de","fromNode":"concept-a9f4749797725557","fromSide":"right","toNode":"concept-0271e544f234d67b","toSide":"left","label":"is_a"},
+		{"id":"edge-132bf23d40f578c9","fromNode":"concept-a9f4749797725557","fromSide":"right","toNode":"concept-05414060b73bbbcf","toSide":"left","label":"used_for"},
+		{"id":"edge-dbb842ecc4199ace","fromNode":"concept-a9f4749797725557","fromSide":"right","toNode":"concept-324601bddf043ecc","toSide":"left","label":"used_for"},
+		{"id":"edge-34ada84640320512","fromNode":"concept-a9f4749797725557","fromSide":"right","toNode":"concept-38756aafa250f405","toSide":"left","label":"acts_via"},
+		{"id":"edge-1916aa1652b18d76","fromNode":"concept-00aff774158ff375","fromSide":"right","toNode":"concept-ce8ce09c94edcb22","toSide":"left","label":"is_a"},
+		{"id":"edge-3ad2ebff8e58f293","fromNode":"concept-00aff774158ff375","fromSide":"right","toNode":"concept-05414060b73bbbcf","toSide":"left","label":"used_for"},
+		{"id":"edge-ba53910980f926bb","fromNode":"concept-00aff774158ff375","fromSide":"right","toNode":"concept-38756aafa250f405","toSide":"left","label":"acts_via"},
+		{"id":"edge-284367c8b981b07a","fromNode":"concept-17d7f106be82ab77","fromSide":"right","toNode":"concept-d3e6a97f01c0735c","toSide":"left","label":"related_to"},
+		{"id":"edge-9b6d4bd62a17ffca","fromNode":"concept-17d7f106be82ab77","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"used_for"},
+		{"id":"edge-fba182e1c819c5b5","fromNode":"concept-ce8ce09c94edcb22","fromSide":"right","toNode":"concept-bcea1c87f145b817","toSide":"left","label":"is_a"},
+		{"id":"edge-39fa36834f0679b0","fromNode":"concept-ce8ce09c94edcb22","fromSide":"right","toNode":"concept-7e0e92672c36e3f3","toSide":"left","label":"has_property"},
+		{"id":"edge-368f95e7647d9009","fromNode":"concept-13c1f3fb2880c61f","fromSide":"right","toNode":"concept-11cef29796ad1f6b","toSide":"left","label":"is_a"},
+		{"id":"edge-c2cfd31fa27f48dc","fromNode":"concept-13c1f3fb2880c61f","fromSide":"right","toNode":"concept-808d0e25cc545d79","toSide":"left","label":"used_for"},
+		{"id":"edge-1bf12eaf12419153","fromNode":"concept-4f4fab85b5f5bdb5","fromSide":"right","toNode":"concept-b3c8b5ff4f3891b7","toSide":"left","label":"is_a"},
+		{"id":"edge-72e1a04ce2576d9e","fromNode":"concept-4f4fab85b5f5bdb5","fromSide":"right","toNode":"concept-1fbced5107f74ed2","toSide":"left","label":"used_for"},
+		{"id":"edge-d62834c8f317f69c","fromNode":"concept-8ec32fc6e9729eef","fromSide":"right","toNode":"concept-4f4fab85b5f5bdb5","toSide":"left","label":"is_a"},
+		{"id":"edge-02b7968a3834f687","fromNode":"concept-8ec32fc6e9729eef","fromSide":"right","toNode":"concept-1fbced5107f74ed2","toSide":"left","label":"used_for"},
+		{"id":"edge-89fed1e26b582aa1","fromNode":"concept-54c9d69e4ab86043","fromSide":"right","toNode":"concept-ba430b1c39f61cfb","toSide":"left","label":"acts_via"},
+		{"id":"edge-bd01aa64bf55002c","fromNode":"concept-54c9d69e4ab86043","fromSide":"right","toNode":"concept-85a95296490a1ae7","toSide":"left","label":"improves"},
+		{"id":"edge-0d62c084f2770806","fromNode":"concept-4aba571acc235b6f","fromSide":"right","toNode":"concept-0271e544f234d67b","toSide":"left","label":"is_a"},
+		{"id":"edge-9350b108db0d92c2","fromNode":"concept-4aba571acc235b6f","fromSide":"right","toNode":"concept-324601bddf043ecc","toSide":"left","label":"used_for"},
+		{"id":"edge-f1e666f35778a0c1","fromNode":"concept-eb95c9efd2d91741","fromSide":"right","toNode":"concept-5612d81de4250bac","toSide":"left","label":"is_a"},
+		{"id":"edge-4d692e1e7ebe05c8","fromNode":"concept-eb95c9efd2d91741","fromSide":"right","toNode":"concept-248b26ed54d501b7","toSide":"left","label":"used_for"},
+		{"id":"edge-27e91fbc524ec9f7","fromNode":"concept-5a9cd02115deb4eb","fromSide":"right","toNode":"concept-098b870319a7a3d6","toSide":"left","label":"component_of"},
+		{"id":"edge-fdd0f726bc2b7d49","fromNode":"concept-28f9a6724212f466","fromSide":"right","toNode":"concept-b9c5b791fbf2339f","toSide":"left","label":"is_a"},
+		{"id":"edge-ee3304fa85110fb2","fromNode":"concept-90e77fad7450b240","fromSide":"right","toNode":"concept-428349244c0075ac","toSide":"left","label":"related_to"},
+		{"id":"edge-27af0cb864a59f32","fromNode":"concept-90e77fad7450b240","fromSide":"right","toNode":"concept-92bdf341b2f67481","toSide":"left","label":"has_property"},
+		{"id":"edge-260040b2ce17ba6c","fromNode":"concept-90e77fad7450b240","fromSide":"right","toNode":"concept-2ef030f119f4d911","toSide":"left","label":"has_property"},
+		{"id":"edge-b00f9035e22fbe08","fromNode":"concept-d3af0f76a0bee920","fromSide":"right","toNode":"concept-d5209dac1c256350","toSide":"left","label":"related_to"},
+		{"id":"edge-919959d1d52d0939","fromNode":"concept-026bcf0ed817f4ca","fromSide":"right","toNode":"concept-b9c5b791fbf2339f","toSide":"left","label":"is_a"},
+		{"id":"edge-fb230945e27cd947","fromNode":"concept-ba430b1c39f61cfb","fromSide":"right","toNode":"concept-85a95296490a1ae7","toSide":"left","label":"improves"},
+		{"id":"edge-c6d7d00f505ddb6d","fromNode":"concept-324601bddf043ecc","fromSide":"right","toNode":"concept-90e77fad7450b240","toSide":"left","label":"component_of"},
+		{"id":"edge-fc195133e7331e99","fromNode":"concept-2c1c0088a07e42de","fromSide":"right","toNode":"concept-f39bf880bf67358d","toSide":"left","label":"is_a"},
+		{"id":"edge-44a81fb855d1b6d2","fromNode":"concept-2c1c0088a07e42de","fromSide":"right","toNode":"concept-1fbced5107f74ed2","toSide":"left","label":"used_for"},
+		{"id":"edge-cebb71f31e582343","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-f4bb832fba83254f","toSide":"left","label":"tagged"},
+		{"id":"edge-3db83e06eed7babe","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-d458203dc7ccee08","toSide":"left","label":"tagged"},
+		{"id":"edge-1100e7ce16783e72","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-05414060b73bbbcf","toSide":"left","label":"tagged"},
+		{"id":"edge-65356b14c548d7d5","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-54c9d69e4ab86043","toSide":"left","label":"tagged"},
+		{"id":"edge-49de752bc57e020a","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-ba430b1c39f61cfb","toSide":"left","label":"tagged"},
+		{"id":"edge-887cd6717a3e795b","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-38756aafa250f405","toSide":"left","label":"tagged"},
+		{"id":"edge-a90fb33b56a6a67e","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-5612d81de4250bac","toSide":"left","label":"tagged"},
+		{"id":"edge-54a02bc68bc21ba5","fromNode":"paper-37974a325a0b07d7","fromSide":"right","toNode":"concept-85a95296490a1ae7","toSide":"left","label":"tagged"}
+	]
 }
