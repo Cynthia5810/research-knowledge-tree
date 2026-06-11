@@ -10,6 +10,7 @@
 00_Inbox/*
 !00_Inbox/zotero_to_obsidian_workflow.md
 !00_Inbox/.gitkeep
+!00_Inbox/proposed_concepts.md
 *.pdf
 *_fulltext.txt
 *.bib
