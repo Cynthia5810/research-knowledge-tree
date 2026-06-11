@@ -1,7 +1,7 @@
 # 自动推进协议：Ion separation 批量解读
 
-> 由定时任务每 20 分钟触发一次。窗口：2026-06-10 23:20 起，至 2026-06-11 09:40；10:00 触发验收。
-> 用户施凤艳将于 2026-06-11 10:00 验收。她有用量限制——**每个 tick 必须精简**。
+> 由定时任务每 20 分钟触发一次（2026-06-11 10:35 起，队列驱动，无固定结束时间）。
+> 用户施凤艳随时可能验收。她有用量限制——**每个 tick 必须精简**。
 
 ## 硬性原则
 
@@ -15,8 +15,8 @@
 
 ## 每个 tick 的流程
 
-1. 检查当前时间：若在 2026-06-11 09:50 之后，执行下方「验收流程」而不是常规流程。
-2. 读 `00_Inbox/ion_separation_queue.md`，取**第一条 status=pending**（文件已按 P1→P2→P3 排序）。先把该行改为 in_progress 并保存（防重复）。
+1. 读 `00_Inbox/ion_separation_queue.md`：若已无 pending 且增强模式也已完成（所有 done 论文都有 claim 记录），执行下方「验收流程」而不是常规流程。
+2. 否则取**第一条 status=pending**（文件已按 P1→P2→P3 排序）。先把该行改为 in_progress 并保存（防重复）。
 3. 取数据（vault 根目录 `D:\学术知识树\Membrane Knowledge Tree`）：
    - 元数据：`curl.exe -s -H "Zotero-API-Version: 3" "http://127.0.0.1:23119/api/users/0/items/{KEY}?format=json"`
    - 附件列表：`.../items/{KEY}/children?format=json`，找 itemType=attachment 且 contentType=application/pdf 的 key
@@ -29,7 +29,7 @@
 5. 队列状态改 done，执行原则 6 的收尾。
 6. 若队列已无 pending：进入**增强模式**——每 tick 为一篇已 done 的论文补 1 条 claim 记录（`04_Claim_Evidence_Records/`，参照现有 claim 卡格式），全部补完则本 tick 直接结束。
 
-## 验收流程（2026-06-11 ~10:00 的 tick 执行一次）
+## 验收流程（队列与增强模式全部完成时执行一次；用户随时要求也可执行）
 
 1. 生成 `99_Outputs/ion_separation_batch_report.md`：done/triaged/pending 统计、新建卡片清单（按综述/原始分组）、proposed_concepts.md 的提议汇总表、失败日志摘要、等待用户确认的事项清单。
 2. commit + push。
